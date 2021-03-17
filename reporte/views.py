@@ -24,4 +24,4 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'reporte/about.html', {'title': 'About'})
+    return render(request, 'reporte/example.html', {'title': 'About'})

@@ -302,6 +302,7 @@ h3 {
 
 /* button style */
 /* line 220, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/theme-default.scss */
+
 .owl-carousel .owl-nav div {
   background: transparent;
   height: 40px;
@@ -315,7 +316,7 @@ h3 {
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  width: 40px;
+  width: 50px;
   background-color: transparent;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -327,11 +328,15 @@ h3 {
   left: -20px;
   color: #FF3414 !important;
 }
-
 /* line 247, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/theme-default.scss */
 .owl-carousel .owl-nav div.owl-next {
   left: auto;
-  right: -20px;
+  right: 20px;
+}
+
+.owl-carousel .owl-nav div.owl-prev {
+  left: auto;
+  left: 20px;
 }
 
 /* line 252, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/theme-default.scss */
@@ -1914,7 +1919,7 @@ h3 {
 
 /* line 15, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_counter.scss */
 .counter_area .single_counter h3 {
-  color: #FF3414;
+  color: #253b19;
   font-weight: 500;
   font-size: 46px;
   margin-bottom: 5px;
@@ -2122,7 +2127,7 @@ h3 {
 
 /* line 2, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_testmonial.scss */
 .testimonial_area {
-  background-image: url(../img/banner/testmonial.png);
+  background-color: rgb(93, 138, 85);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -2139,7 +2144,7 @@ h3 {
 
 /* line 12, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_testmonial.scss */
 .testimonial_area .testmonial_active {
-  background: #fff;
+  background: rgb(38, 90, 25);
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -2228,7 +2233,7 @@ h3 {
 .testimonial_area .owl-dots .owl-dot {
   width: 14px;
   height: 14px;
-  background: #FFD6D0;
+  background: #bcd1b7;
   display: inline-block;
   margin: 0 5px;
   border-radius: 50%;
@@ -2237,7 +2242,7 @@ h3 {
 
 /* line 81, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_testmonial.scss */
 .testimonial_area .owl-dots .owl-dot.active {
-  background: #FF3414;
+  background: #132e0c;
 }
 
 /* line 89, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_testmonial.scss */
@@ -2455,7 +2460,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_contact_action.scss */
 .contact_action_area {
-  background-image: url(../img/banner/contact_bg.png);
+  background-image: url(../img/banner/ellimo.jpg);
   position: relative;
   z-index: 0;
   padding: 138px 0;
@@ -2636,7 +2641,7 @@ h3 {
 /* line 112, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_contact_action.scss */
 .chose_area .about_image:before {
   position: absolute;
-  background: #FF3414;
+  background: #0f460d;
   right: -25px;
   bottom: -25px;
   content: '';
@@ -5004,7 +5009,7 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 
 /* line 1, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_bradcam.scss */
 .bradcam_bg_1 {
-  background-image: url(../img/banner/bradcam.png);
+  background-image: url(../img/banner/ellimo.jpg);
 }
 
 /* line 4, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_bradcam.scss */
@@ -8856,3 +8861,95 @@ h6 {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.set-bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
+/*---------------------
+  Hero
+-----------------------*/
+
+.hs-slider.owl-carousel .owl-item.active .hs-text h2 {
+	top: 0;
+	opacity: 1;
+}
+
+.hs-slider.owl-carousel .owl-item.active .hs-text p {
+	top: 0;
+	opacity: 1;
+}
+
+.hs-slider.owl-carousel .owl-item.active .hs-text .primary-btn {
+	top: 0;
+	opacity: 1;
+}
+
+.hs-slider.owl-carousel .owl-nav button {
+	font-size: 24px;
+	color: #ffffff;
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 50%;
+	position: absolute;
+	left: 100px;
+	top: 50%;
+	-webkit-transform: translateY(-25px);
+	-ms-transform: translateY(-25px);
+	transform: translateY(-25px);
+}
+
+.hs-slider.owl-carousel .owl-nav button.owl-next {
+	left: auto;
+	right: 100px;
+}
+
+.hs-item {
+	height: 900px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	text-align: center;
+}
+
+.hs-item .hs-text h2 {
+	font-size: 60px;
+	color: #050303;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+	position: relative;
+	top: 100px;
+	-webkit-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	opacity: 0;
+}
+
+.hs-item .hs-text p {
+	color: #000000;
+	line-height: 30px;
+	margin-bottom: 32px;
+	position: relative;
+	top: 100px;
+	-webkit-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+	opacity: 0;
+}
+
+.hs-item .hs-text .primary-btn {
+	position: relative;
+	top: 100px;
+	-webkit-transition: all 0.7s ease-out;
+	-o-transition: all 0.7s ease-out;
+	transition: all 0.7s ease-out;
+	opacity: 0;
+}
