@@ -2338,6 +2338,16 @@ h3 {
   padding-top: 120px;
   padding-bottom: 120px;
 }
+.service_details_area_NEW {
+  padding-top: 30px;
+}
+
+.service_details_area_NEW .service_details_info h3 {
+  font-size: 50px;
+  color: #344E27;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
 
 /* line 4, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_service_details.scss */
 .service_details_area .service_details_info {
@@ -5011,7 +5021,12 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 .bradcam_bg_1 {
   background-image: url(../img/banner/ellimo.jpg);
 }
-
+.bradcam_basic_color {
+  background-color: #426341
+}
+.bradcam_basic_color2 {
+  background-color: #11531B
+}
 /* line 4, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_bradcam.scss */
 .bradcam_bg_2 {
   background-image: url(../img/banner/bradcam2.png);
@@ -5022,6 +5037,14 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
   background-size: cover;
   background-position: center center;
   padding: 115px 0 115px 0;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 0;
+}
+.bradcam_area2 {
+  background-size: cover;
+  background-position: center center;
+  padding: 20px 0 20px 0;
   background-repeat: no-repeat;
   position: relative;
   z-index: 0;
@@ -5046,7 +5069,7 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
   top: 0;
   width: 100%;
   height: 100%;
-  background: #001D38;
+  background: #426341;
   opacity: .5;
   z-index: -1;
   content: '';

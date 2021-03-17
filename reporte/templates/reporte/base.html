@@ -27,9 +27,13 @@
     <link rel="stylesheet" href="{% static 'reporte/css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'reporte/css/slicknav.css' %}">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{% static 'reporte/css/swiper-bundle.css' %}" />
+    <link rel="stylesheet" href="{% static 'reporte/css/swiper-bundle.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'reporte/css/auxSwiper.css' %}">
 
     <link rel="stylesheet" href="{% static 'reporte/css/style.css' %}">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
 </head>
 
 <body>
@@ -230,7 +234,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="{% static 'reporte/js/jquery.slicknav.min.js' %}"></script>
     <script src="{% static 'reporte/js/jquery.magnific-popup.min.js' %}"></script>
     <script src="{% static 'reporte/js/plugins.js' %}"></script>
+<<<<<<< HEAD
     <script src="{% static 'reporte/js/main1.js' %}"></script>
+=======
+    <script src="{% static 'reporte/js/swiper-bundle.js' %}"></script>
+    <script src="{% static 'reporte/js/swiper-bundle.min.js' %}"></script>
+>>>>>>> a9b7b5315417e724dcfd4cff9d9ab4ed59f220cd
     <!-- <script src="js/gijgo.min.js"></script> -->
     <script src="{% static 'reporte/js/slick.min.js' %}"></script>
 
@@ -245,7 +254,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
     <script src="{% static 'reporte/js/main.js' %}"></script>
-
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            loop: true,
+            centeredSlides: true,
+            // If we need pagination
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
 
 
 
