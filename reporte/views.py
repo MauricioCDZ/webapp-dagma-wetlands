@@ -23,5 +23,7 @@ def home(request):
     return render(request, 'reporte/home.html', context)
 
 
-def about(request):
-    return render(request, 'reporte/about.html', {'title': 'About'})
+def nuestraHistoria(request):
+    return render(request, 'reporte/nuestraHistoria.html', {'title': 'nuestraHistoria'})
+def LaBabilla(request):
+    return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'LaBabilla'})
