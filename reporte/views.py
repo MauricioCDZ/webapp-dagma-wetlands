@@ -23,12 +23,28 @@ def home(request):
     return render(request, 'reporte/home.html', context)
 
 
-<<<<<<< HEAD
 def about(request):
     return render(request, 'reporte/example.html', {'title': 'About'})
-=======
+
 def nuestraHistoria(request):
-    return render(request, 'reporte/nuestraHistoria.html', {'title': 'nuestraHistoria'})
+    return render(request, 'reporte/nuestraHistoria.html', {'title': 'About'})
 def LaBabilla(request):
-    return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'LaBabilla'})
->>>>>>> a9b7b5315417e724dcfd4cff9d9ab4ed59f220cd
+    return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'About'})
+
+def babilla_flora(request):
+    return render(request, 'reporte/humedales/galeria_flora.html', {'title': 'About'})
+
+def babilla_fauna(request):
+    return render(request, 'reporte/humedales/galeria_fauna.html', {'title': 'About'})
+def babilla_acuatica(request):
+    return render(request, 'reporte/humedales/galeria_acuatica.html', {'title': 'About'})
+
+def planes_manejo(request):
+    return render(request, 'reporte/planes_manejo.html', {'title': 'About'})
+
+def programas(request):
+    return render(request, 'reporte/programas.html', {'title': 'About'})
+
+
+def hacer_reporte(request):
+    return render(request, 'reporte/hacer_reporte.html', {'title': 'About'})
