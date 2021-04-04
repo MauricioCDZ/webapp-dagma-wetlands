@@ -1,0 +1,17 @@
+{% load static %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+<!-- "{% static 'reporte/main.css' %}"-->
+<head>
+    {% include 'reporte/head.html' %}    
+</head>
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+    {% include 'reporte/header.html' %}
+    {% block content %}{% endblock %}
+    {% include 'reporte/footer.html' %}
+</body>
+</html>

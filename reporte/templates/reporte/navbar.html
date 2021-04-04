@@ -1,0 +1,47 @@
+{% load static %}   
+    <div id="sticky-header" class="main-header-area">
+        <div class="container">
+            <div class="header_bottom_border">
+                <div class="row align-items-center">
+                    <div class="col-12 d-block d-lg-none">
+                        <div class="logo">
+                            <a href="{% url 'reporte-home' %}">
+                                <img src="{% static 'reporte/img/wetland.png' %}" alt="">
+                                Humedales Cali
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-10 col-lg-10">
+                        <div class="main-menu  d-none d-lg-block ">
+                            <nav  >
+                                <ul id="navigation">
+                                    <li><a  href="#">Home</a></li>
+                                    <li><a  href="#">Nuestra historia</a></li>
+                                    <li><a href="#">Humedales <i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="#">Ecoparque las garzas</a></li>
+                                            <li><a href="#">La babilla</a></li>
+                                            <li><a href="#">El retiro </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Recursos</a></li>
+                                    <li><a href="#">Deja una queja <i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="#">blog</a></li>
+                                            <li><a href="#">single-blog</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Involucrate</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
