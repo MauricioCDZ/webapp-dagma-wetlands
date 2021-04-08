@@ -7,7 +7,29 @@
       html, body {
       min-height: 100%;
       }
+<<<<<<< HEAD
 
+=======
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+      h1 {
+      position: absolute;
+      margin: 0;
+      font-size: 32px;
+      color: #fff;
+      z-index: 2;
+      }
+      h2 {
+      font-weight: 400;
+      }
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
       .testbox {
       display: flex;
       justify-content: center;
@@ -20,9 +42,31 @@
       padding: 20px;
       border-radius: 6px;
       background: #fff;
+<<<<<<< HEAD
       box-shadow: 0 0 20px 0 #386d2d; 
       }
 
+=======
+      box-shadow: 0 0 20px 0 #095484; 
+      }
+      .banner {
+      position: relative;
+      height: 210px;
+      background-image: url("/uploads/media/default/0001/01/3f0d2969f2cffeb123ab1a6fa7408bf87bd34bd3.jpeg");  
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }
+      .banner::after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.4); 
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      }
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
       input, select {
       margin-bottom: 10px;
       border: 1px solid #ccc;
@@ -145,6 +189,7 @@
       }
     </style>
   </head>
+<<<<<<< HEAD
   
 
     <div class="bradcam_area2 bradcam_basic_color">
@@ -246,5 +291,81 @@
       </div>
 
     </div>
+=======
+  <body>
+    <div class="testbox">
+      <form action="/">
+        <div class="banner">
+          <h1>Formulario Reporte</h1>
+        </div>
+        <h2>Reporte:</h2>
+        <div class="item">
+          <p>Titulo reporte</p>
+          <div class="name-item">
+            <input type="text" name="name" placeholder="Ejm: Escombros en humedal la babilla"/>
+         
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descripción</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+          </div>
+          
+          <div class="item">
+
+            <div class="city-item">
+
+              <select>
+                <option value="">Humedal</option>
+                <option value="1">Russia</option>
+                <option value="2">Germany</option>
+                <option value="3">France</option>
+                <option value="4">Armenia</option>
+                <option value="5">USA</option>
+              </select>
+              
+            </div>
+          </div>
+
+          <div class="item">
+
+            <div class="city-item">
+
+              <select>
+                <option value="">Tipo aporte</option>
+                <option value="1">Russia</option>
+                <option value="2">Germany</option>
+                <option value="3">France</option>
+                <option value="4">Armenia</option>
+                <option value="5">USA</option>
+              </select>
+              
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Sube tu imagen</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+
+
+
+
+        <div class="question">
+          <p>Privacy Policy<span class="required">*</span></p>
+          <div class="question-answer checkbox-item">
+            <div>
+              <input type="checkbox" value="none" id="check_1" name="check" required/>
+              <label for="check_1" class="check"><span>I agree to the <a href="https://www.w3docs.com/privacy-policy">privacy policy.</a></span></label>
+            </div>
+          </div>
+        </div>
+        <div class="btn-block">
+          <button type="submit" href="/">Send</button>
+        </div>
+      </form>
+    </div>
+  </body>
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
      
 {% endblock content %}

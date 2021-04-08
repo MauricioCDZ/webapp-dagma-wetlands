@@ -1899,7 +1899,10 @@ h3 {
 
 /* line 4, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_counter.scss */
 .counter_area .offcan_bg {
+<<<<<<< HEAD
   background-image: url(../img/about/0ffcan.png);
+=======
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
   background-size: 100% 100%;
   background-position: center center;
   padding: 70px 0 40px 0;
@@ -2401,7 +2404,11 @@ h3 {
 .service_details_area .service_details_left .nav a.active, .service_details_area .service_details_left .nav a .nav-pills > a {
   color: #fff;
   background-color: transparent;
+<<<<<<< HEAD
   color: #FF3414;
+=======
+  color: rgb(28, 83, 21);
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
   font-size: 16px;
 }
 
@@ -2473,7 +2480,11 @@ h3 {
   background-image: url(../img/banner/ellimo.jpg);
   position: relative;
   z-index: 0;
+<<<<<<< HEAD
   padding: 138px 0;
+=======
+  padding: 20px 0;
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -3365,7 +3376,11 @@ h3 {
   right: 12px;
   height: auto;
   font-family: 'themify';
+<<<<<<< HEAD
   color: #FF3414;
+=======
+  color: rgb(28, 83, 21);
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
   font-size: 14px;
   left: -24px;
 }
@@ -5436,7 +5451,10 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 
 /* line 1, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_service.scss */
 .service_area {
+<<<<<<< HEAD
   background: #F5FBFF;
+=======
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
   padding: 120px 0 90px 0;
 }
 
@@ -6297,11 +6315,16 @@ h6 {
 
 /* line 361, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .serial {
+<<<<<<< HEAD
   width: 11.83%;
+=======
+  width: 12%;
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
   padding-left: 30px;
 }
 
 /* line 365, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
+<<<<<<< HEAD
 .progress-table .country {
   width: 28.07%;
 }
@@ -6309,11 +6332,25 @@ h6 {
 /* line 368, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .visit {
   width: 19.74%;
+=======
+.progress-table .nombre{
+  width: 22%;
+}
+.progress-table .cedula{
+  width: 22%;
+}
+.progress-table .edad{
+  width: 22%;
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
 }
 
 /* line 371, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .percentage {
+<<<<<<< HEAD
   width: 40.36%;
+=======
+  width: 22%;
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
   padding-right: 50px;
 }
 
@@ -6324,8 +6361,14 @@ h6 {
 
 /* line 377, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .table-head .serial,
+<<<<<<< HEAD
 .progress-table .table-head .country,
 .progress-table .table-head .visit,
+=======
+.progress-table .table-head .nombre,
+.progress-table .table-head .cedula,
+.progress-table .table-head .edad,
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
 .progress-table .table-head .percentage {
   color: #415094;
   line-height: 40px;
@@ -6342,17 +6385,26 @@ h6 {
 
 /* line 391, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .table-row .serial,
+<<<<<<< HEAD
 .progress-table .table-row .country,
 .progress-table .table-row .visit,
+=======
+.progress-table .table-head .nombre,
+.progress-table .table-head .cedula,
+.progress-table .table-head .edad,
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
 .progress-table .table-row .percentage {
   display: flex;
   align-items: center;
 }
 
+<<<<<<< HEAD
 /* line 399, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .table-row .country img {
   margin-right: 15px;
 }
+=======
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
 
 /* line 404, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .table-row .percentage .progress {
@@ -7236,7 +7288,11 @@ h6 {
 
 /* line 14, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_blog.scss */
 .blog_area a:hover, .blog_area a :hover {
+<<<<<<< HEAD
   background: -webkit-linear-gradient(131deg, #103b0d 0%, #0b3f0b 99%);
+=======
+  background: -webkit-linear-gradient(131deg, #FF3414 0%, #FF3414 99%);
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
@@ -7815,7 +7871,11 @@ h6 {
   left: 10px;
   display: block;
   color: #fff;
+<<<<<<< HEAD
   background-color: #163310;
+=======
+  background-color: rgb(28, 83, 21);
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
   padding: 8px 15px;
   border-radius: 5px;
 }
@@ -8975,6 +9035,7 @@ h6 {
 	-o-transition: all 0.7s ease-out;
 	transition: all 0.7s ease-out;
 	opacity: 0;
+<<<<<<< HEAD
 }
 /*---------------------
   Footer
@@ -9460,4 +9521,6 @@ textarea.input1 + .shadow-input1 {
 }
 .select-css option {
  font-weight:normal;
+=======
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
 }

@@ -1,5 +1,6 @@
 {% extends "reporte/base.html" %}
 {% block content %}
+<<<<<<< HEAD
     {% for reporte in reportes %}
         <article class="media content-section">
           <div class="media-body">
@@ -11,6 +12,17 @@
             </div>
             <h2><a class="article-title" href="{% url 'reporte-detail' reporte.id %}">{{ reporte.titulo }}</a></h2>
             <p class="article-content">{{ reporte.descripcion }}</p>
+=======
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
           </div>
         </article>
     {% endfor %}

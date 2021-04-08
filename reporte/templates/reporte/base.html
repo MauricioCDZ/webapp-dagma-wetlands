@@ -4,6 +4,7 @@
 <html class="no-js" lang="zxx">
 <!-- "{% static 'reporte/main.css' %}"-->
 <head>
+<<<<<<< HEAD
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Transportion</title>
@@ -36,10 +37,15 @@
 
 </head>
 
+=======
+    {% include 'reporte/head.html' %}    
+</head>
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
 <body>
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
+<<<<<<< HEAD
 
     <!-- header-start -->
     <header>
@@ -320,4 +326,10 @@
 
 </body>
 
+=======
+    {% include 'reporte/header.html' %}
+    {% block content %}{% endblock %}
+    {% include 'reporte/footer.html' %}
+</body>
+>>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
 </html>

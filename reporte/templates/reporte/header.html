@@ -1,0 +1,31 @@
+{% load static %}
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div class="header-top_area d-none d-lg-block">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-4 col-lg-4">
+                            <div class="logo">
+                                <a href="{% url 'reporte-home' %}">
+                                    <img src="{% static 'reporte/img/wetland.png' %}" alt="">
+                                    Humedales Cali
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-md-8">
+                            <div class="header_right d-flex align-items-center">
+
+
+                                <div class="book_btn d-none d-lg-block">
+                                    <a class="boxed-btn3-line" href="#">Aporta con tu imagen</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include 'reporte/navbar.html' %}
+        </div>
+    </header>
+    <!-- header-end -->
