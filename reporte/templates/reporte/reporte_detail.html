@@ -1,0 +1,16 @@
+
+{% extends "reporte/base.html" %}
+{% block content %}
+<article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ object.autor.profile.image.url }}">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">{{ object.autor }}</a>
+        <small class="text-muted">{{ object.fecha_reporte|date:"F d, Y" }}</small>
+  
+      </div>
+      <h2 class="article-title">{{ object.titulo }}</h2>
+      <p class="article-content">{{ object.descripcion }}</p>
+    </div>
+  </article>
+{% endblock content %}

@@ -1,0 +1,85 @@
+
+{% extends "reporte/base.html" %}
+{% block content %}
+
+<div class="bradcam_area2 bradcam_basic_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-l-12 col-m-12 col-sm-12 col-12">
+                <div class="bradcam_text text-center">
+                    <h3 style="font-size: 40px; color: #fff; font-weight: 400; margin-bottom: 0; text-transform: capitalize;">
+                    Login</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="whole-wrap">
+            <div class="container box_1170">
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-xl-3"></div>
+                        <div class="col-xl-6">
+                            <div class="mt-10">
+                                <label for="exampleFormControlTextarea1">Correo</label>
+                                <input type="email" name="username" placeholder="correo"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'correo'" required
+                                    class="single-input" {% if form.is_bound %}value="{{ form.username.value }}"{% endif %}>
+                                    <span class="shadow-input1"></span>
+                                    {% for err in form.email.errors %}
+                                        <small class="text-danger ml-2">{{ err }}</small><br>
+                                    {% endfor %}
+                            </div>
+                            <div class="mt-10">
+                                <label for="exampleFormControlTextarea1">Contraseña</label>
+                                <input type="password" name="password" placeholder="contraseña"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'contraseña'" required
+                                    class="single-input" {% if form.is_bound %}value="{{ form.password.value }}"{% endif %}>
+                                    {% for err in form.password.errors %}
+                                    <small class="text-danger ml-2">{{ err }}</small><br>
+                                {% endfor %}
+                            </div>
+                    
+                        </div>
+                        <div class="col-xl-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3"></div>
+                <div class="col-xl-6">
+                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">
+                        <div class="row">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-8">
+                                Entrar
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+        </small>
+    </div>
+</div>
+
+{% endblock content %}

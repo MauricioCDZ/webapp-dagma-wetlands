@@ -1,14 +1,16 @@
 {% extends "reporte/base.html" %}
 {% block content %}
-    {% for post in posts %}
+    {% for reporte in reportes %}
         <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.author }}</a>
-              <small class="text-muted">{{ post.date_posted }}</small>
+              <a class="mr-2" href="{% url 'user-reportes' reporte.autor.name %}">{{ reporte.autor }}</a>
+              <small class="text-muted">{{ reporte.fecha_reporte|date:"F d,Y" }}</small>
+              <a class="mr-2">{{ reporte.get_humedal_display }}</a>
+              <img class="rounded-circle account-img" src="{{ reporte.image.url }}" width="300" height="300" >
             </div>
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
+            <h2><a class="article-title" href="{% url 'reporte-detail' reporte.id %}">{{ reporte.titulo }}</a></h2>
+            <p class="article-content">{{ reporte.descripcion }}</p>
           </div>
         </article>
     {% endfor %}

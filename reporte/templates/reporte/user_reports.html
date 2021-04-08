@@ -1,0 +1,59 @@
+{% extends "reporte/base.html" %}
+{% block content %}
+<div class="bradcam_area2 bradcam_basic_color">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="bradcam_text text-center">
+                    <h3 style="font-size: 30px; color: #fff; font-weight: 400; margin-bottom: 0; text-transform: capitalize;">Mis reportes </h3>
+                </div>
+            </div>
+            <div class="col"></div>
+            <div class="col">
+                
+                <div class="call_add_action">
+                    <a href="{% url 'reporte-create' %}" class="boxed-btn3">Realizar aporte</a>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <div  class="p-5 col-lg-8 mb-5 mb-lg-0">
+        <div class="blog_left_sidebar">
+            {% for reporte in reportes %}
+
+            <article class="blog_item">
+                <div class="blog_item_img">
+                    <img class="card-img rounded-0" src="{{ reporte.image.url }}" alt="">
+                    <a href="#" class="blog_item_date">
+                        <h3>{{ reporte.fecha_reporte|date:"d" }}</h3>
+                        <p>{{ reporte.fecha_reporte|date:"M" }}</p>
+                    </a>
+                </div>
+
+                <div class="blog_details">
+                    <a class="d-inline-block" href="single-blog.html">
+                        <h2>{{ reporte.titulo }}</h2>
+                    </a>
+                    <p>{{ reporte.descripcion }}
+                    </p>
+                    <ul class="blog-info-link">
+                        <li><a href="#"><i class="fa fa-user"></i> {{ reporte.autor.name }}</a></li>
+                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comentarios</a></li>
+                    </ul>
+                </div>
+            </article>
+
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,136 @@
+{% extends "reporte/base.html" %}
+{% load static  %}
+{% block content %}
+    
+<div class="bradcam_area2 bradcam_basic_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-l-12 col-m-12 col-sm-12 col-12">
+                <div class="bradcam_text text-center">
+                    <h3 style="font-size: 40px; color: #fff; font-weight: 400; margin-bottom: 0; text-transform: capitalize;">Regístrate</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="whole-wrap">
+    <div class="container box_1170">
+        <div class="section-top-border">
+            <div class="row">
+                <div class="col-xl-3"></div>
+				<div class="col-xl-6">    
+
+                    <form class="contact1-form validate-form" method="POST">
+                        {% csrf_token %}
+                   
+                        
+                         
+                        <div class="wrap-input1 validate-input" data-validate="Name is required">
+                            <input type="text" name="name" placeholder="Nombre(s)"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nombre(s)'" required
+                            class="single-input" {% if form.is_bound %}value="{{ form.name.value }}"{% endif %} >
+                            
+                            <span class="shadow-input1"></span>
+                            {% for err in form.name.errors %}
+                                <small class="text-danger ml-2">{{ err }}</small><br>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                            <input type="email" name="email" placeholder="Email"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Correo'" required
+                            class="single-input" {% if form.is_bound %}value="{{ form.email.value }}"{% endif %} placeholder="Email">
+                            <span class="shadow-input1"></span>
+                            {% for err in form.email.errors %}
+                                <small class="text-danger ml-2">{{ err }}</small><br>
+                            {% endfor %}
+                        </div>
+
+                        <div class="wrap-input1 validate-input" data-validate="Name is required">
+                            <input type="password" name="password1"  placeholder="Contraseña"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contraseña'" required
+                            class="single-input"{% if form.is_bound %}value="{{ form.password1.value }}"{% endif %} placeholder="Contraseña">
+                            <span class="shadow-input1"></span>
+                            {% for err in form.password1.errors %}
+                                <small class="text-danger ml-2">{{ err }}</small><br>
+                            {% endfor %}
+                        </div>
+
+
+                        <div class="wrap-input1 validate-input" data-validate="Name is required">
+                            <input type="password" name="password2" placeholder="Repite la contraseña"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repite la contraseña'" required
+                            class="single-input" {% if form.is_bound %}value="{{ form.password2.value }}"{% endif %} placeholder="Repite la contraseña">
+                            <span class="shadow-input1"></span>
+                            {% for err in form.password2.errors %}
+                                <small class="text-danger ml-2">{{ err }}</small><br>
+                            {% endfor %}
+                        </div>
+
+
+
+                        <div class="p-3 container">
+                            <div class="row">
+                                <div class="col-xl-3"></div>
+                                <div class="col-xl-6">
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                                Registrarse
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    
+    </div>
+</div>
+
+<!--===============================================================================================-->
+<script src="{% static 'reporte/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'reporte/vendor/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'reporte/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'reporte/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'reporte/vendor/tilt/tilt.jquery.min.js' %}"></script>
+<script>
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+</script>
+
+<!--===============================================================================================-->
+	<script src="{% static 'reporte/js/main2.js' %}"></script>
+
+
+
+{% endblock content %}
