@@ -11,31 +11,86 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-xl-10 col-lg-10">
-                        <div class="main-menu  d-none d-lg-block ">
-                            <nav  >
-                                <ul id="navigation">
-                                    <li><a  href="#">Home</a></li>
-                                    <li><a  href="#">Nuestra historia</a></li>
-                                    <li><a href="#">Humedales <i class="ti-angle-down"></i></a>
-                                        <ul class="submenu">
-                                            <li><a href="#">Ecoparque las garzas</a></li>
-                                            <li><a href="#">La babilla</a></li>
-                                            <li><a href="#">El retiro </a></li>
+                    {% if user.is_authenticated %}
+                            <div class="col-xl-14 col-lg-14">
+                                <div class="main-menu  d-none d-lg-block ">
+                                    <nav  >
+                                        <ul id="navigation">
+                                            <li><a  href="#">Home</a></li>
+                                            <li><a  href="{% url 'reporte-nuestraHistoria' %}">Nuestra historia</a></li>
+                                            <li><a href="#">Humedales <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="#">Ecoparque las garzas</a></li>
+                                                    <li><a href="{% url 'reporte-humedales-lababilla' %}">La babilla</a></li>
+                                                    <li><a href="#">El retiro </a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Recursos <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% url 'reporte-planes' %}">Planes de manejo ambiental</a></li>
+                                                    <li><a href="{% url 'reporte-recursos-videos' %}">Videos</a></li>
+                                                    <li><a href="{% url 'reporte-programas' %}">Programas y eventos</a></li>
+                                                </ul>
+                                                
+                                            
+                                            </li>
+                                            <li><a href="{% url 'reporte-quejas'  %}">Deja una queja</a>
+                                            </li>
+                                            <li><a href="#">Involucrate</a></li>
+                                            <li><a href="{% url 'reporte-blog' %}">Blog</a></li>
+                                          
+                                            <li><a href="#">Usuario <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% url 'user-reportes' user.name %}">Mis reportes</a></li>
+                                                    <li><a href="{% url 'profile' %}">Mi perfil</a></li>
+                                                    <li><a href="{% url 'logout' %}">Salir </a></li>
+                                                </ul>
+                                                <li id="rightbox"  class="search_btn">
+                                                    
+                                                        
+                                                        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="38" height="38" alt="">
+                                                    
+                                                </li>
+                                            </li>
+                                            
                                         </ul>
-                                    </li>
-                                    <li><a href="#">Recursos</a></li>
-                                    <li><a href="#">Deja una queja <i class="ti-angle-down"></i></a>
-                                        <ul class="submenu">
-                                            <li><a href="#">blog</a></li>
-                                            <li><a href="#">single-blog</a></li>
+                                    
+                                    </nav>
+                                </div>
+                            </div>
+
+                            {% else %}
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="main-menu  d-none d-lg-block ">
+                                    <nav  >
+                                        <ul id="navigation">
+                                            <li><a  href="#">Home</a></li>
+                                            <li><a  href="{% url 'reporte-nuestraHistoria' %}">Nuestra historia</a></li>
+                                            <li><a href="#">Humedales <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="#">Ecoparque las garzas</a></li>
+                                                    <li><a href="{% url 'reporte-humedales-lababilla' %}">La babilla</a></li>
+                                                    <li><a href="#">El retiro </a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Recursos <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% url 'reporte-planes' %}">Planes de manejo ambiental</a></li>
+                                                    <li><a href="{% url 'reporte-recursos-videos' %}">Videos</a></li>
+                                                    <li><a href="{% url 'reporte-programas' %}">Programas y eventos</a></li>
+                                                </ul>
+                                            
+                                            
+                                            </li>
+                                            <li><a href="{% url 'reporte-quejas'  %}">Deja una queja</a>
+                                            </li>
+                                            <li><a href="#">Involucrate</a></li>
+                                            <li><a href="{% url 'reporte-blog' %}">Blog</a></li>
                                         </ul>
-                                    </li>
-                                    <li><a href="#">Involucrate</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+                                    </nav>
+                                </div>
+                            </div>
+                            {% endif %}
 
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>

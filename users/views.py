@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from reporte.models import Reporte
 
+
+
 def register(request):
     form = UserAdminCreationForm()
     if request.method == 'POST':

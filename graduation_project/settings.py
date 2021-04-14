@@ -11,9 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
 import os
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,13 +25,9 @@ SECRET_KEY = 'us%q0j2#j-h)o#vi5zxk^)*8vcng94l9nhjqfj41ig)tap7!*e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'users.CustomUser'
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -132,3 +126,6 @@ LOGIN_URL = 'login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LdMsaUaAAAAAHV-wxGfq2kWKU9OlEBnoVexO9Y0'
+
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']

@@ -1,5 +1,4 @@
 from django.db import models
-<<<<<<< HEAD
 from django.utils import timezone
 from django.conf import settings
 
@@ -8,6 +7,16 @@ from django.urls import reverse
 #from django.contrib.auth.models import User
 User = settings.AUTH_USER_MODEL
 # Create your models here.
+import os, io
+from google.cloud import vision_v1
+from PIL import Image
+from google.cloud.vision_v1 import types
+from captcha.fields import ReCaptchaField
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/mauricio/Documentos/graduation_project/reporte/humedales-cali-token.json'
+client = vision_v1.ImageAnnotatorClient()
+
+
 class Reporte(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField()
@@ -28,7 +37,35 @@ class Reporte(models.Model):
 
     def get_absolute_url(self):
         return reverse('reporte-detail', kwargs={'pk': self.pk})
-=======
+
+    def save(self, *args, **kwargs):
+        #super().save()
+
+        #img = Image.open(self.image)
+
+        content = self.image.read()
+        image = vision_v1.types.Image(content=content)
+        response = client.safe_search_detection(image=image)
+        safe_search = response.safe_search_annotation
+
+        likelihood = ('Unknown', 'Very Unlikely', 'Unlikely','Possible', 'Likely', 'Very Likely')
+
+        likelihood1 = (
+			'Possible', 'Likely', 'Very Likely')
+
+        if (likelihood[safe_search.adult] in  likelihood1  or likelihood[safe_search.medical] in  likelihood1 or likelihood[safe_search.violence] in  likelihood1 or likelihood[safe_search.racy] in  likelihood1):
+            self.titulo = "Contenido Bloqueado"
+            self.image = 'media/default.jpg'
+            self.descripcion = "Contenido Bloqueado por imagen posiblemente explicita."
+        #self.titulo=self.image.path
+        """
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.image.path) """
+
+        super(Reporte, self).save(*args, **kwargs)
+            
 
 # Create your models here.
 class Comuna(models.Model):
@@ -40,6 +77,7 @@ class TipoHumedal(models.Model):
 	numAsignado = models.IntegerField(null=False)
 	def __str__(self):
 		return self.nombre
+
 class Usuario(models.Model):
 	nombre = models.CharField(max_length= 200, null=False)
 	celular = models.IntegerField(null=False)
@@ -78,4 +116,3 @@ class Humedales(models.Model):
 	dateCreated = models.DateTimeField(auto_now_add= True, null=False)
 	def __str__(self):
 		return self.nombre
->>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e

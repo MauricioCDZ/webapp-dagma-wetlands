@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.shortcuts import render, get_object_or_404
 from .models import Reporte
 from users.models import CustomUser
@@ -11,8 +10,11 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-
-
+import json
+import urllib
+from django.conf import settings
+from django.contrib import messages
+from django.shortcuts import render, redirect
 def home(request):
   
     return render(request, 'reporte/example.html')
@@ -50,9 +52,32 @@ class ReporteDetailView(DetailView):
 class ReporteCreateView(LoginRequiredMixin, CreateView):
     model = Reporte
     fields = ['titulo', 'descripcion','image','humedal']
+    
+   
+
 
     def form_valid(self, form):
         form.instance.autor = self.request.user
+
+        if form.is_valid():
+            recaptcha_response = self.request.POST.get('g-recaptcha-response')
+            url = 'https://www.google.com/recaptcha/api/siteverify'
+            values = {
+                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+            data = urllib.parse.urlencode(values).encode()
+            req =  urllib.request.Request(url, data=data)
+            response = urllib.request.urlopen(req)
+            result = json.loads(response.read().decode())
+            if result['success']:
+                form.save()
+                messages.success(self.request, 'New comment added with success!')
+            else:
+                messages.error(self.request, 'Invalid reCAPTCHA. Please try again.')
+            return redirect('reporte-create')
+
+
         return super().form_valid(form)
 
 class ReporteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -79,47 +104,15 @@ class ReporteDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-=======
-from django.shortcuts import render
-
-posts = [
-    {
-        'author': 'CoreyMS',
-        'title': 'Blog Post 1',
-        'content': 'First post content',
-        'date_posted': 'August 27, 2018'
-    },
-    {
-        'author': 'Jane Doe',
-        'title': 'Blog Post 2',
-        'content': 'Second post content',
-        'date_posted': 'August 28, 2018'
-    }
-]
-
-
-def home(request):
-    context = {
-        'posts': posts
-    }
-    return render(request, 'reporte/home.html', context)
-
-
-def about(request):
-    return render(request, 'reporte/example.html', {'title': 'About'})
->>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
 
 def nuestraHistoria(request):
     return render(request, 'reporte/nuestraHistoria.html', {'title': 'About'})
 def LaBabilla(request):
     return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'About'})
-<<<<<<< HEAD
-=======
 def ElRetiro(request):
     return render(request, 'reporte/humedales/ElRetiro.html', {'title': 'ElRetiro'})
 def EcoparqueLasGarzas(request):
     return render(request, 'reporte/humedales/EcoparqueLasGarzas.html', {'title': 'EcoparqueLasGarzas'})
->>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
 
 def babilla_flora(request):
     return render(request, 'reporte/humedales/galeria_flora.html', {'title': 'About'})
@@ -135,20 +128,16 @@ def planes_manejo(request):
 def programas(request):
     return render(request, 'reporte/programas.html', {'title': 'About'})
 
-<<<<<<< HEAD
-=======
 def registrate(request):
     return render(request, 'reporte/registrate.html', {'title': 'registrate'})
 def videos(request):
     return render(request, 'reporte/recursos/videos.html', {'title': 'videos'})
 def quejas(request):
     return render(request, 'reporte/quejas.html', {'title': 'quejas'})
->>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e
 
 def hacer_reporte(request):
     return render(request, 'reporte/hacer_reporte.html', {'title': 'About'})
 
-<<<<<<< HEAD
 def registro(request):
     return render(request, 'reporte/registrate.html', {'title': 'About'})
 
@@ -166,7 +155,6 @@ def blog(request):
 
 def misreportes(request):
     return render(request, 'reporte/mis_reportes.html', {'title': 'About'})  
-=======
 def gestionarBlog(request):
     return render(request, 'reporte/administrador/gestionarBlog.html', {'title': 'Gestionar Blog'})
 
@@ -175,4 +163,3 @@ def gestionarReportes(request):
 
 def gestionarUsuarios(request):
     return render(request, 'reporte/administrador/gestionarUsuarios.html', {'title': 'Gestionar Usuarios'})
->>>>>>> 5752ea43f40a6c0470a69916c429a8a7c275278e

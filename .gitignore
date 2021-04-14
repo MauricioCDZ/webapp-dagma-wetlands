@@ -136,3 +136,11 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Personal files
+.google_api/
+humedales-cali-token.json
+
+.reporte/
+humedales-cali-token.json
+
