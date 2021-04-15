@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Reporte
+from .models import *
 from users.models import CustomUser
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
@@ -104,11 +104,13 @@ class ReporteDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-
+def involucrate(request):
+    return render(request, 'reporte/involucrate.html', {'title': 'Involucrate'})
 def nuestraHistoria(request):
     return render(request, 'reporte/nuestraHistoria.html', {'title': 'About'})
 def LaBabilla(request):
-    return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'About'})
+    humedal = Humedal.objects.get(nombre= "La Babilla")
+    return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'LaBabilla', 'humedal' : humedal})
 def ElRetiro(request):
     return render(request, 'reporte/humedales/ElRetiro.html', {'title': 'ElRetiro'})
 def EcoparqueLasGarzas(request):
@@ -118,20 +120,21 @@ def babilla_flora(request):
     return render(request, 'reporte/humedales/galeria_flora.html', {'title': 'About'})
 
 def babilla_fauna(request):
-    return render(request, 'reporte/humedales/galeria_fauna.html', {'title': 'About'})
+    humedal = Humedal.objects.get(nombre= "La Babilla")
+    return render(request, 'reporte/humedales/galeria_fauna_terrestre.html', {'title': 'About', 'humedal': humedal})
 def babilla_acuatica(request):
-    return render(request, 'reporte/humedales/galeria_acuatica.html', {'title': 'About'})
+    return render(request, 'reporte/humedales/galeria_fauna_acuatica.html', {'title': 'About'})
 
 def planes_manejo(request):
-    return render(request, 'reporte/planes_manejo.html', {'title': 'About'})
+    return render(request, 'reporte/recursos/planes_manejo.html', {'title': 'About'})
 
 def programas(request):
-    return render(request, 'reporte/programas.html', {'title': 'About'})
+    return render(request, 'reporte/recursos/programas.html', {'title': 'About'})
 
-def registrate(request):
-    return render(request, 'reporte/registrate.html', {'title': 'registrate'})
 def videos(request):
     return render(request, 'reporte/recursos/videos.html', {'title': 'videos'})
+def registrate(request):
+    return render(request, 'reporte/registrate.html', {'title': 'registrate'})
 def quejas(request):
     return render(request, 'reporte/quejas.html', {'title': 'quejas'})
 
@@ -156,7 +159,8 @@ def blog(request):
 def misreportes(request):
     return render(request, 'reporte/mis_reportes.html', {'title': 'About'})  
 def gestionarBlog(request):
-    return render(request, 'reporte/administrador/gestionarBlog.html', {'title': 'Gestionar Blog'})
+    reportes= Reporte.objects.all()
+    return render(request, 'reporte/administrador/gestionarBlog.html', {'title': 'Gestionar Blog', 'reportes': reportes})
 
 def gestionarReportes(request):
     return render(request, 'reporte/administrador/gestionarReportes.html', {'title': 'Gestionar Reportes'})
