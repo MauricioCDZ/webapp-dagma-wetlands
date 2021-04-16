@@ -11,10 +11,10 @@ import os, io
 from google.cloud import vision_v1
 from PIL import Image
 from google.cloud.vision_v1 import types
-#from captcha.fields import ReCaptchaField
+from captcha.fields import ReCaptchaField
 
-#os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/mauricio/Documentos/graduation_project/reporte/humedales-cali-token.json'
-#client = vision_v1.ImageAnnotatorClient()
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/mauricio/Documentos/graduation_project/reporte/humedales-cali-token.json'
+client = vision_v1.ImageAnnotatorClient()
 
 
 def validate_image(image):
@@ -23,8 +23,8 @@ def validate_image(image):
 	if file_size > limit_mb * 1024 * 1024:
 		raise ValidationError("Max size of file is %s MB" % limit_mb)
 class Reporte(models.Model):
-    nombreUsuario = models.ForeignKey(User,on_delete=models.CASCADE, null=False)
-    nombreHumedal = models.ForeignKey('Humedal', on_delete=models.CASCADE, null=False)
+    autor = models.ForeignKey(User,on_delete=models.CASCADE, null=False)
+    humedal = models.ForeignKey('Humedal', on_delete=models.CASCADE, null=False)
     titulo = models.CharField(max_length= 100, null=False)
     descripcion = models.TextField(null=False)
     fecha_reporte = models.DateTimeField(default=timezone.now, null=False)
@@ -33,8 +33,9 @@ class Reporte(models.Model):
     tipoReporte = models.ForeignKey('TipoReporte', on_delete=models.CASCADE, null=False)
     STATUS = (('Visible', 'Visible'), ('Invisible', 'Invisible'))
     IMPORTANCIA = (('Muy Importante', 'Muy Importante'), ('Regular', 'Regular'))
-    status = models.CharField(max_length= 200, null=False, choices=STATUS)
-    importancia = models.CharField(max_length= 200, null=False, choices=IMPORTANCIA)
+    status = models.CharField(max_length= 200, null=False, choices=STATUS,default='Invisible')
+    importancia = models.CharField(max_length= 200, null=False, choices=IMPORTANCIA, default='Regular')
+
 
     def __str__(self):
         return self.titulo

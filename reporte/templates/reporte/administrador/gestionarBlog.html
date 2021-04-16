@@ -1,5 +1,6 @@
 
 {% extends "reporte/base.html" %}
+{% load static %}
 {% block content %}
 	<div class="bradcam_area2 bradcam_basic_color">
 		<div class="container">
@@ -46,35 +47,42 @@
 					</div>
 				</div>
 			</div>
+		
+					
+			{% for reporte in reportes %}
 			<article class="blog_item">
 				<div class="blog_details">
 					<div class="row">
-						{% for reporte in reportes %}
-							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-								<div class="blog_item_img">
-									<img class="card-img rounded-0" src="reporte.imagen" alt="" style="height: 200px">
-									<a href="#" class="blog_item_date">
-										<h3>15</h3>
-										<p>Jan</p>
-									</a>
-								</div>
-							</div>
-							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-								<a class="d-inline-block" href="single-blog.html">
-									<h2>{{ reporte.titulo }}</h2>
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+							<div class="blog_item_img">
+								<img class="card-img rounded-0" src="{% static reporte.image %} " alt="" style="height: 200px">
+								<a href="#" class="blog_item_date">
+									<h3>15</h3>
+									<p>Jan</p>
 								</a>
-								<p>
-									{{ reporte.descripcion }}
-									<br>
-									<strong>Prioridad:</strong> {{ reporte.importancia }}
-									<br>
-									<strong>Humedal:</strong> {{ reporte.nombreHumedal }}
-									<br>
-									<strong>Tipo:</strong> {{ reporte.tipoAporte }}
-								</p>
 							</div>
-						{% endfor %}
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+							<a class="d-inline-block" href="single-blog.html">
+								<h2>{{ reporte.titulo }}</h2>
+							</a>
+							<p>
+								{{ reporte.descripcion }}
+								<br>
+								<strong>Prioridad:</strong> {{ reporte.importancia }}
+							
+								<br>
+								<strong>Humedal:</strong> {{ reporte.nombreHumedal }}
+								<br>
+								<strong>Tipo:</strong> {{ reporte.tipoAporte }}
+							</p>
+						</div>
 					</div>
+				</div>
+			</article>
+			{% endfor %}
+
+					
 				</div>
 			</article>
 			<article class="blog_item">

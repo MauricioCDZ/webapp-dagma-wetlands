@@ -124,8 +124,8 @@ LOGIN_REDIRECT_URL = 'reporte-home'
 LOGIN_URL = 'login'
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'reporte/static/')
+MEDIA_URL = 'reporte/static/'
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LdMsaUaAAAAAHV-wxGfq2kWKU9OlEBnoVexO9Y0'
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']

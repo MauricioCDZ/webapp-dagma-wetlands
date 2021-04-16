@@ -51,8 +51,8 @@ class ReporteDetailView(DetailView):
 
 class ReporteCreateView(LoginRequiredMixin, CreateView):
     model = Reporte
-    fields = ['titulo', 'descripcion','image','humedal']
-    
+    fields = ['titulo', 'descripcion','image','humedal','tipoReporte']
+    humedales = Humedal.objects.all()
    
 
 
