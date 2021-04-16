@@ -38,7 +38,7 @@ class UserReporteListView(ListView):
     model = Reporte
     template_name = 'reporte/user_reports.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'reportes'
-    
+    paginate_by = 4
 
     def get_queryset(self):
         user = get_object_or_404(CustomUser, name=self.kwargs.get('name'))
