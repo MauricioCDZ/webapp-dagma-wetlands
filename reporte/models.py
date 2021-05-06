@@ -13,7 +13,7 @@ from PIL import Image
 from google.cloud.vision_v1 import types
 from captcha.fields import ReCaptchaField
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/mauricio/Documentos/graduation_project/reporte/humedales-cali-token.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/mauricio/Documentos/graduation_project/reporte/humedales-urbanos.json'
 client = vision_v1.ImageAnnotatorClient()
 
 
@@ -148,6 +148,7 @@ class Humedal(models.Model):
 	flora = models.ManyToManyField(Flora, through = 'FloraHumedal')
 	def __str__(self):
 		return self.nombre
+		
 class InvolucrateMensaje(models.Model):
 	nombre = models.CharField(max_length= 200, null=False)
 	correoElectronico = models.EmailField(max_length= 200, null=False)

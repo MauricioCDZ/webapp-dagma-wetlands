@@ -22,12 +22,11 @@
                     <div class="row gallery-item">
                         {% for animal in humedal.faunaTerrestre.all %}
                             <div class="col-md-4">
-                                <a href="{% static animal.foto.url %}" class="img-pop-up " title="hola personas">
+                                <a href="{% static animal.foto %}" class="img-pop-up " title="Ave rapaz familia no se que">
                                     <div class="single-gallery-image" style="background: url({% static animal.foto %});"></div>
                                 </a>
                                 <p><strong>Especie:</strong>{{animal.nombre}}</p>
                                 <p><strong>Familia:</strong>{{animal.familia}}</p>
-                                <p><strong>Dirección:</strong>{{animal.foto.url}}</p>
                             </div>
                         {% endfor %}
                         <div class="col-md-4">

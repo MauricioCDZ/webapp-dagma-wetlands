@@ -6,7 +6,9 @@ from .views import (
     ReporteCreateView,
     ReporteUpdateView,
     ReporteDeleteView,
-    UserReporteListView
+    UserReporteListView,
+    gestionarReportes,
+    ReporteCreateViewInvitado
 )
 
 
@@ -22,7 +24,7 @@ urlpatterns = [
     path('recursos/planes_manejo/', views.planes_manejo, name='reporte-planes'),
     path('recursos/programas/', views.programas, name='reporte-programas'),
     path('recursos/videos/', views.videos, name='reporte-recursos-videos'),
-    path('hacer_reporte/', views.hacer_reporte, name='reporte-hacer-reporte'),
+    path('hacer_reporte/', ReporteCreateViewInvitado.as_view() , name='reporte-hacer-reporte'),
     path('involucrate/', views.involucrate, name='reporte-involucrate'),
     path('blog/', views.blog, name='reporte-blog'),
     path('mis_reportes/', views.misreportes, name='reporte-mis-reportes'),

@@ -11,18 +11,68 @@
                             </a>
                         </div>
                     </div>
-                    {% if user.is_authenticated %}
+                    {% if  user.is_authenticated and request.user.is_staff %}
+                    <div class="col-xl-14 col-lg-14">
+                        <div class="main-menu  d-none d-lg-block ">
+                            <nav  >
+                                <ul id="navigation">
+                                    <li><a  href="{% url 'reporte-home' %}">Home</a></li>
+                                    <li><a  href="{% url 'reporte-nuestraHistoria' %}">Nuestra historia</a></li>
+                                    <li><a href="#">Humedales <i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="{% url 'reporte-humedales-EcoparqueLasGarzas' %}">Ecoparque las garzas</a></li>
+                                            <li><a href="{% url 'reporte-humedales-lababilla' %}">La babilla</a></li>
+                                            <li><a href="{% url 'reporte-humedales-ElRetiro' %}">El retiro </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Recursos <i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="{% url 'reporte-planes' %}">Planes de manejo ambiental</a></li>
+                                            <li><a href="{% url 'reporte-recursos-videos' %}">Videos</a></li>
+                                            <li><a href="{% url 'reporte-programas' %}">Programas y eventos</a></li>
+                                        </ul>
+                                        
+                                    
+                                    </li>
+                                    <li><a href="{% url 'reporte-quejas'  %}">Deja una queja</a>
+                                    </li>
+                                    <li><a href="{% url 'reporte-involucrate' %}">Involucrate</a></li>
+                                    <li><a href="{% url 'reporte-blog' %}">Blog</a></li>
+                                  
+                                    <li><a href="#">Administrador <i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="{% url 'reporte-administrador-gestionarBlog' %}">Gestionar Blog</a></li>
+                                            <li><a href="{% url 'reporte-administrador-gestionarReportes' %}">Gestionar Reportes</a></li>
+                                            <li><a href="{% url 'reporte-administrador-gestionarUsuarios' %}">Gestionar Usuarios</a></li>
+                                            <li><a href="{% url 'profile' %}">Mi perfil</a></li>
+                                            <li><a href="{% url 'logout' %}">Salir </a></li>
+                                        </ul>
+                                        <li id="rightbox"  class="search_btn">
+                                            
+                                                
+                                                <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="38" height="38" alt="">
+                                            
+                                        </li>
+                                    </li>
+                                    
+                                </ul>
+                            
+                            </nav>
+                        </div>
+                    </div>
+                            {% elif user.is_authenticated %}
+                           
                             <div class="col-xl-14 col-lg-14">
                                 <div class="main-menu  d-none d-lg-block ">
                                     <nav  >
                                         <ul id="navigation">
-                                            <li><a  href="#">Home</a></li>
+                                            <li><a  href="{% url 'reporte-home' %}">Home</a></li>
                                             <li><a  href="{% url 'reporte-nuestraHistoria' %}">Nuestra historia</a></li>
                                             <li><a href="#">Humedales <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="#">Ecoparque las garzas</a></li>
+                                                    <li><a href="{% url 'reporte-humedales-EcoparqueLasGarzas' %}">Ecoparque las garzas</a></li>
                                                     <li><a href="{% url 'reporte-humedales-lababilla' %}">La babilla</a></li>
-                                                    <li><a href="#">El retiro </a></li>
+                                                    <li><a href="{% url 'reporte-humedales-ElRetiro' %}">El retiro </a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">Recursos <i class="ti-angle-down"></i></a>
@@ -64,13 +114,13 @@
                                 <div class="main-menu  d-none d-lg-block ">
                                     <nav  >
                                         <ul id="navigation">
-                                            <li><a  href="#">Home</a></li>
+                                            <li><a  href="{% url 'reporte-home' %}">Home</a></li>
                                             <li><a  href="{% url 'reporte-nuestraHistoria' %}">Nuestra historia</a></li>
                                             <li><a href="#">Humedales <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="#">Ecoparque las garzas</a></li>
+                                                    <li><a href="{% url 'reporte-humedales-EcoparqueLasGarzas' %}">Ecoparque las garzas</a></li>
                                                     <li><a href="{% url 'reporte-humedales-lababilla' %}">La babilla</a></li>
-                                                    <li><a href="#">El retiro </a></li>
+                                                    <li><a href="{% url 'reporte-humedales-ElRetiro' %}">El retiro </a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">Recursos <i class="ti-angle-down"></i></a>

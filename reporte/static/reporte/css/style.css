@@ -6305,16 +6305,13 @@ h6 {
 .progress-table .nombre{
   width: 22%;
 }
-.progress-table .cedula{
-  width: 22%;
-}
-.progress-table .edad{
-  width: 22%;
+.progress-table .correo{
+  width: 32%;
 }
 
 /* line 371, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .percentage {
-  width: 22%;
+  width: 34%;
   padding-right: 50px;
 }
 
@@ -6326,10 +6323,9 @@ h6 {
 /* line 377, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .table-head .serial,
 .progress-table .table-head .nombre,
-.progress-table .table-head .cedula,
-.progress-table .table-head .edad,
+.progress-table .table-head .correo,
 .progress-table .table-head .percentage {
-  color: #415094;
+  color: #2b6b1e;
   line-height: 40px;
   text-transform: uppercase;
   font-weight: 500;
@@ -6345,8 +6341,7 @@ h6 {
 /* line 391, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .table-row .serial,
 .progress-table .table-head .nombre,
-.progress-table .table-head .cedula,
-.progress-table .table-head .edad,
+.progress-table .table-head .correo,
 .progress-table .table-row .percentage {
   display: flex;
   align-items: center;
@@ -6372,7 +6367,7 @@ h6 {
 
 /* line 411, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */
 .progress-table .table-row .percentage .progress .progress-bar.color-1 {
-  background-color: #6382e6;
+  background-color: #2b6b1e;
 }
 
 /* line 414, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_elements.scss */

@@ -15,6 +15,13 @@ import urllib
 from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from .decorators import allowed_users
+from django.core.mail import *
+from django.core.mail import send_mail
+from django.utils.decorators import method_decorator
+from django.core.paginator import Paginator
+from .filters import ReporteFilter
+
 def home(request):
   
     return render(request, 'reporte/example.html')
@@ -41,9 +48,11 @@ class UserReporteListView(ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        user = get_object_or_404(CustomUser, name=self.kwargs.get('name'))
-        return Reporte.objects.filter(autor=user).order_by('-fecha_reporte')
+        #user = get_object_or_404(CustomUser, email=self.kwargs.get('email'))
+        user =  CustomUser.objects.filter(email = self.request.user).first()
 
+        return Reporte.objects.filter(autor=user).order_by('-fecha_reporte')
+        #return Reporte.objects.get(autor=self.kwargs['name']).order_by('-fecha_reporte')
 
 class ReporteDetailView(DetailView):
     model = Reporte
@@ -52,7 +61,7 @@ class ReporteDetailView(DetailView):
 class ReporteCreateView(LoginRequiredMixin, CreateView):
     model = Reporte
     fields = ['titulo', 'descripcion','image','humedal','tipoReporte']
-    humedales = Humedal.objects.all()
+   
    
 
 
@@ -82,7 +91,7 @@ class ReporteCreateView(LoginRequiredMixin, CreateView):
 
 class ReporteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Reporte
-    fields = ['titulo', 'descripcion','image','humedal']
+    fields = ['titulo', 'descripcion','image','humedal','tipoReporte']
 
     def form_valid(self, form):
         form.instance.autor = self.request.user
@@ -105,7 +114,22 @@ class ReporteDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 def involucrate(request):
-    return render(request, 'reporte/involucrate.html', {'title': 'Involucrate'})
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        send_mail(
+            name +" "+subject,
+            message,
+            email,
+            ['humedalesurbanoscali@gmail.com'],
+        )
+        
+        return render(request, 'reporte/involucrate.html', {'title': 'Involucrate'})
+    else:
+        return render(request, 'reporte/involucrate.html', {'title': 'Involucrate'})
 def nuestraHistoria(request):
     return render(request, 'reporte/nuestraHistoria.html', {'title': 'About'})
 def LaBabilla(request):
@@ -137,9 +161,43 @@ def registrate(request):
     return render(request, 'reporte/registrate.html', {'title': 'registrate'})
 def quejas(request):
     return render(request, 'reporte/quejas.html', {'title': 'quejas'})
-
+########################
 def hacer_reporte(request):
     return render(request, 'reporte/hacer_reporte.html', {'title': 'About'})
+
+
+class ReporteCreateViewInvitado(CreateView):
+    model = Reporte
+    fields = ['titulo', 'descripcion','image','humedal','tipoReporte']
+   
+   
+
+
+    def form_valid(self, form):
+        form.instance.autor = CustomUser.objects.filter(email='invitado@gmail.com').first()
+
+
+        if form.is_valid():
+            recaptcha_response = self.request.POST.get('g-recaptcha-response')
+            url = 'https://www.google.com/recaptcha/api/siteverify'
+            values = {
+                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+            data = urllib.parse.urlencode(values).encode()
+            req =  urllib.request.Request(url, data=data)
+            response = urllib.request.urlopen(req)
+            result = json.loads(response.read().decode())
+            if result['success']:
+                form.save()
+                messages.success(self.request, 'New comment added with success!')
+            else:
+                messages.error(self.request, 'Invalid reCAPTCHA. Please try again.')
+            return redirect('reporte-create')
+
+
+        return super().form_valid(form)
+###
 
 def registro(request):
     return render(request, 'reporte/registrate.html', {'title': 'About'})
@@ -157,13 +215,53 @@ def blog(request):
 #    return render(request, 'reporte/user.html', {'title': 'About'})
 
 def misreportes(request):
-    return render(request, 'reporte/mis_reportes.html', {'title': 'About'})  
+    return render(request, 'reporte/mis_reportes.html', {'title': 'About'})
+
+@allowed_users(allowed_roles=['staff','admin'])
 def gestionarBlog(request):
     reportes= Reporte.objects.all()
-    return render(request, 'reporte/administrador/gestionarBlog.html', {'title': 'Gestionar Blog', 'reportes': reportes})
+    users = CustomUser.objects.all()   
 
+    return render(request, 'reporte/administrador/gestionarBlog.html', {'title': 'Gestionar Blog', 'reportes': reportes,'users':users})
+
+
+
+
+@allowed_users(allowed_roles=['staff','admin'])
 def gestionarReportes(request):
-    return render(request, 'reporte/administrador/gestionarReportes.html', {'title': 'Gestionar Reportes'})
+    
+    all_reports =  Reporte.objects.all()
+    f = ReporteFilter(request.GET,queryset= all_reports)
+    paginator = Paginator(all_reports, 3) # Show 3 reports per page.
 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+         'reportes':all_reports,
+         'page_obj': page_obj,
+         'filter': f
+    }
+    return render(request, 'reporte/administrador/gestionarReportes.html', context)
+
+
+def count_posts_of(user):
+    return Reporte.objects.filter(author=user.id).count()
+
+@allowed_users(allowed_roles=['staff','admin'])
 def gestionarUsuarios(request):
-    return render(request, 'reporte/administrador/gestionarUsuarios.html', {'title': 'Gestionar Usuarios'})
+    reportes= Reporte.objects.all()
+    users = CustomUser.objects.all()
+    num_reports_per_user= [0 for i in range(len(users))]
+    total_reportes = len(reportes)
+    porcentaje_reportes = [0 for i in range(len(users))]
+    for i in range (len(users)):
+        num_reports_per_user[i]=len(reportes.filter(autor=users[i].id))
+        porcentaje_reportes[i] =  (num_reports_per_user[i]/total_reportes)*100
+
+
+
+    return render(request, 'reporte/administrador/gestionarUsuarios.html', {'title': 'Gestionar Usuarios',
+    'reportes': reportes,'users':users,'user_reports':num_reports_per_user,'porcentaje_reportes':porcentaje_reportes})
+
+
