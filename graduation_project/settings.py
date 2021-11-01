@@ -142,7 +142,7 @@ else:
             'PORT': '5432',
             'NAME': 'main',
             'USER': 'mauro',
-            'PASSWORD': 'rc4vfvcLoe3cqz8f',
+            'PASSWORD': '*',
         }
     }
 # [END db_setup]
@@ -191,7 +191,7 @@ LOGIN_URL = 'login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'reporte/static/')
 MEDIA_URL = 'reporte/static/'
-GOOGLE_RECAPTCHA_SECRET_KEY = '6LdMsaUaAAAAAHV-wxGfq2kWKU9OlEBnoVexO9Y0'
+GOOGLE_RECAPTCHA_SECRET_KEY = '*'
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
@@ -199,6 +199,6 @@ MAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'calihumedalesurbanos@gmail.com'
-EMAIL_HOST_PASSWORD = 'Humedales4321.'
+EMAIL_HOST_PASSWORD = '*'
 EMAIL_USE_TLS = True
 
