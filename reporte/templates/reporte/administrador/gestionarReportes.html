@@ -1,6 +1,7 @@
 
 {% extends "reporte/base.html" %}
 {% block content %}
+{% load reporte_tags %}
 	<div class="bradcam_area2 bradcam_basic_color">
 		<div class="container">
 			<div class="row">
@@ -24,7 +25,7 @@
 				
 			</form>
 			</div>
-			{% for reporte in filter.qs %}
+			{% for reporte in page_obj %}
 			<article class="blog_item">
 				<div class="blog_details">
 					<div class="row">
@@ -38,7 +39,7 @@
 							</div>
 						</div>
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-							<a class="d-inline-block" href="single-blog.html">
+							<a class="d-inline-block" href="{% url 'reporte-detail' reporte.id %}">
 								<h2>{{ reporte.titulo }}</h2>
 							</a>
 							<p>
@@ -51,13 +52,13 @@
 								<br>
 								<strong>Humedal:</strong> {{reporte.humedal.nombre}}
 								<br>
-								<strong>Tipo:</strong> Basura en el humedal
+								<strong>Tipo:</strong> {{ reporte.tipoReporte }}
 							</p>
 							<div class="row">
 								<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
 								<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
 									<div class="book_btn d-none d-lg-block">
-										<a class="boxed-btn3-line" style="width: 138px" href="#">Fijar</a>
+										<a class="boxed-btn3-line" style="width: 138px" href="{% url 'reporte-update1' reporte.id %}">Fijar</a>
 									</div>
 								</div>
 								<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
@@ -72,10 +73,7 @@
 								</div>
 								<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
 							</div>
-							<ul class="blog-info-link">
-								<li><a href="#"><i class="far fa-user"></i> Juan Camilo Ariza</a></li>
-								<li><a href="#"><i class="far fa-comments"></i> 03 Comentarios</a></li>
-							</ul>
+
 						</div>
 					</div>
 				</div>
@@ -91,7 +89,7 @@
 					{% if page_obj.has_previous %}
 				   
 					<li class="page-item">
-						<a href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Previous">
+						<a href="{% my_url page_obj.previous_page_number 'page' request.GET.urlencode %}" class="page-link" aria-label="Previous">
 							<i class="ti-angle-left"></i>
 						</a>
 					</li>
@@ -102,12 +100,12 @@
 					{% for num in page_obj.paginator.page_range %}
 						{% if page_obj.number == num %}
 						<li class="page-item">
-							<a href="?page={{ num }}" class="page-link">{{ num }}</a>
+							<a href="{% my_url num 'page' request.GET.urlencode %}" class="page-link">{{ num }}</a>
 						</li>
 						
 						{% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
 						<li class="page-item">
-							<a href="?page={{ num }}" class="page-link">{{ num }}</a>
+							<a href="{% my_url num 'page' request.GET.urlencode %}" class="page-link">{{ num }}</a>
 						</li>
 						{% endif %}
 					{% endfor %}
@@ -116,7 +114,7 @@
 					{% if page_obj.has_next %}
 				  
 					<li class="page-item">
-						<a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">
+						<a href="{% my_url page_obj.next_page_number 'page' request.GET.urlencode %}" class="page-link" aria-label="Next">
 							<i class="ti-angle-right"></i>
 						</a>
 					</li>

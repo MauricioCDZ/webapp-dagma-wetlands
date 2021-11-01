@@ -2,6 +2,9 @@
 {% extends "reporte/base.html" %}
 {% load static %}
 {% block content %}
+{% load reporte_tags %}
+
+
 	<div class="bradcam_area2 bradcam_basic_color">
 		<div class="container">
 			<div class="row">
@@ -16,40 +19,15 @@
 	<div class="whole-wrap">
 		<div class="container box_1170">
 			<div class="section-top-border">
-				<div class="row mb-20">
-					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-5">
-						<div class="input-group-icon">
-							<div class="form-select">
-								<select>
-									<option value="1">Filtrar</option>
-									<option value="1">Obj1</option>
-									<option value="1">Obj2</option>
-									<option value="1">Obj3</option>
-									<option value="1">Obj4</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-5">
-						<div class="input-group-icon">
-							<div class="form-select">
-								<select>
-									<option value="1">Ordenar</option>
-									<option value="1">Obj1</option>
-									<option value="1">Obj2</option>
-									<option value="1">Obj3</option>
-									<option value="1">Obj4</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
+				<form method="get">
+					{{ filter.form.as_p }}
+					<input type="submit" value="Filtrar" />
+					
+				</form>
 			</div>
 		
 					
-			{% for reporte in reportes %}
+			{% for reporte in page_obj %}
 			<article class="blog_item">
 				<div class="blog_details">
 					<div class="row">
@@ -57,13 +35,13 @@
 							<div class="blog_item_img">
 								<img class="card-img rounded-0" src="{% static reporte.image %} " alt="" style="height: 200px">
 								<a href="#" class="blog_item_date">
-									<h3>15</h3>
-									<p>Jan</p>
+									<h3>{{ reporte.fecha_reporte|date:"d" }}</h3>
+									<p>{{ reporte.fecha_reporte|date:"M" }}</p>
 								</a>
 							</div>
 						</div>
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-							<a class="d-inline-block" href="single-blog.html">
+							<a class="d-inline-block" href="{% url 'reporte-detail' reporte.id %}">
 								<h2>{{ reporte.titulo }}</h2>
 							</a>
 							<p>
@@ -72,9 +50,9 @@
 								<strong>Prioridad:</strong> {{ reporte.importancia }}
 							
 								<br>
-								<strong>Humedal:</strong> {{ reporte.nombreHumedal }}
+								<strong>Humedal:</strong> {{ reporte.humedal.nombre }}
 								<br>
-								<strong>Tipo:</strong> {{ reporte.tipoAporte }}
+								<strong>Tipo:</strong> {{ reporte.tipoReporte }}
 							</p>
 						</div>
 					</div>
@@ -85,80 +63,49 @@
 					
 				</div>
 			</article>
-			<article class="blog_item">
-				<div class="blog_details">
-					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-							<div class="blog_item_img">
-								<img class="card-img rounded-0" src="/static/reporte/img/basura.jpg" alt="" style="height: 200px">
-								<a href="#" class="blog_item_date">
-									<h3>15</h3>
-									<p>Jan</p>
-								</a>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-							<a class="d-inline-block" href="single-blog.html">
-								<h2>Basura Encontrada en el Humedal La Babilla</h2>
-							</a>
-							<p>
-								Encontré a persona tirando basura al humedal, cuando paseaba a mi perro.
-								<br>
-								<strong>Prioridad:</strong> Importante
-								<br>
-								<strong>Humedal:</strong> La Babilla
-								<br>
-								<strong>Tipo:</strong> Basura en el humedal
-							</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-							<div class="blog_item_img">
-								<img class="card-img rounded-0" src="/static/reporte/img/basura.jpg" alt="" style="height: 200px">
-								<a href="#" class="blog_item_date">
-									<h3>15</h3>
-									<p>Jan</p>
-								</a>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-							<a class="d-inline-block" href="single-blog.html">
-								<h2>Basura Encontrada en el Humedal La Babilla</h2>
-							</a>
-							<p>
-								Encontré a persona tirando basura al humedal, cuando paseaba a mi perro.
-								<br>
-								<strong>Prioridad:</strong> Importante
-								<br>
-								<strong>Humedal:</strong> La Babilla
-								<br>
-								<strong>Tipo:</strong> Basura en el humedal
-							</p>
-						</div>
-					</div>
-				</div>
-			</article>
+
+
+
 			<nav class="blog-pagination justify-content-center d-flex">
 				<ul class="pagination">
+					{% if page_obj.has_previous %}
+				   
 					<li class="page-item">
-						<a href="#" class="page-link" aria-label="Previous">
+						<a href="{% my_url page_obj.previous_page_number 'page' request.GET.urlencode %}" class="page-link" aria-label="Previous">
 							<i class="ti-angle-left"></i>
 						</a>
 					</li>
-					<li class="page-item active">
-						<a href="#" class="page-link">1</a>
-					</li>
+					{% endif %}
+					
+	  
+	
+					{% for num in page_obj.paginator.page_range %}
+						{% if page_obj.number == num %}
+						<li class="page-item">
+							<a href="{% my_url num 'page' request.GET.urlencode %}" class="page-link">{{ num }}</a>
+						</li>
+						
+						{% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+						<li class="page-item">
+							<a href="{% my_url num 'page' request.GET.urlencode %}" class="page-link">{{ num }}</a>
+						</li>
+						{% endif %}
+					{% endfor %}
+	
+	
+					{% if page_obj.has_next %}
+				  
 					<li class="page-item">
-						<a href="#" class="page-link">2</a>
-					</li>
-					<li class="page-item">
-						<a href="#" class="page-link" aria-label="Next">
+						<a href="{% my_url page_obj.next_page_number 'page' request.GET.urlencode %}" class="page-link" aria-label="Next">
 							<i class="ti-angle-right"></i>
 						</a>
 					</li>
+					{% endif %}
+	
 				</ul>
 			</nav>
+
+
 		</div>
 	</div>
 {% endblock content %}

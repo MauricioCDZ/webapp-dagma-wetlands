@@ -11,7 +11,24 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from os import path, environ
+from sys import path as sys_path
+from django import setup
+import django
+from django.conf import settings
 import os
+
+#sys_path.append('graduation_project.settings')    
+#environ.setdefault('DJANGO_SETTINGS_MODULE', 'graduation_project.settings')
+#django.setup()
+
+#os.path.join(settings.BASE_DIR, 'reporte')
+#os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'graduation_project.settings')
+
+#import django
+#django.setup()
+#from django.core.management import call_command
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,10 +42,14 @@ SECRET_KEY = 'us%q0j2#j-h)o#vi5zxk^)*8vcng94l9nhjqfj41ig)tap7!*e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+    
+settings.configure()
 AUTH_USER_MODEL = 'users.CustomUser'
 # Application definition
+
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage" 
 
 INSTALLED_APPS = [
     'reporte.apps.ReporteConfig',
@@ -76,12 +97,55 @@ WSGI_APPLICATION = 'graduation_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
+# Install PyMySQL as mysqlclient/MySQLdb to use Django's mysqlclient adapter
+# See https://docs.djangoproject.com/en/2.1/ref/databases/#mysql-db-api-drivers
+# for more information
+import pymysql  # noqa: 402
+pymysql.version_info = (1, 4, 6, 'final', 0)  # change mysqlclient version
+pymysql.install_as_MySQLdb()
+
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""
+# [START db_setup]
+if os.getenv('GAE_APPLICATION', None):
+    print("hola")
+    # Running on production App Engine, so connect to Google Cloud SQL using
+    # the unix socket at /cloudsql/<your-cloudsql-connection string>
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/humedales-cali:us-central1:polls-instance',
+            'USER': 'mauro',
+            'PASSWORD': 'rc4vfvcLoe3cqz8f',
+            'NAME': 'main',
+        }
+    }
+else:
+    print("Hablame")
+    # Running locally so connect to either a local MySQL instance or connect to
+    # Cloud SQL via the proxy. To start the proxy via command line:
+    #
+    #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306
+    #
+    # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+            'NAME': 'main',
+            'USER': 'mauro',
+            'PASSWORD': 'rc4vfvcLoe3cqz8f',
+        }
+    }
+# [END db_setup]
 
 
 # Password validation
@@ -121,7 +185,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static'
 LOGIN_REDIRECT_URL = 'reporte-home'
 LOGIN_URL = 'login'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'reporte/static/')
+MEDIA_URL = 'reporte/static/'
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LdMsaUaAAAAAHV-wxGfq2kWKU9OlEBnoVexO9Y0'
+
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
+MAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'calihumedalesurbanos@gmail.com'
+EMAIL_HOST_PASSWORD = 'Humedales4321.'
+EMAIL_USE_TLS = True
 

@@ -5,16 +5,24 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
       <div class="hs-slider owl-carousel">
-          <div class="hs-item set-bg" data-setbg="{% static 'reporte/img/elretiro.jpg' %}">
+          <div class="hs-item set-bg" data-setbg="{% static 'reporte/img/el_retiro.jpg' %}">
               <div class="container">
                   <div class="row">
                       <div class="col-lg-12">
+                        <style>
+                            h5 {
+                                text-shadow: 0 0 3px #fafafa, 0 0 5px #fcfcfc;
+                            }
+                        </style>
                           <div class="hs-text">
-                              <h2>Humedal El Retiro</h2>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                  incididunt ut labore et<br /> dolore magna aliqua. Quis ipsum suspendisse ultrices
-                                  gravida accumsan lacus vel facilisis.</p>
-                              <a href="#" class="primary-btn">Contact us</a>
+                              <h2 style="color:#000000">Humedal El Retiro</h2>
+                              <h5 style="color:#000000">Ubicado frente a la Pontificia Universidad Javeriana, 
+                                a 200 metros de la Avenida Cañasgordas
+
+                                
+              
+                                  </h5>
+                              
                           </div>
                       </div>
                   </div>
@@ -26,15 +34,31 @@
                       <div class="col-lg-12">
                           <div class="hs-text">
                               <h2>Lago Las Garzas</h2>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                  incididunt ut labore et<br /> dolore magna aliqua. Quis ipsum suspendisse ultrices
-                                  gravida accumsan lacus vel facilisis.</p>
-                              <a href="#" class="primary-btn">Contact us</a>
+                              <h5 style="color:#000000">Ubicado en la carrera 127 con calle 16ª A, Avenida El Banco, Pance
+
+                            </h5>
+                              
                           </div>
                       </div>
                   </div>
               </div>
           </div>
+          <div class="hs-item set-bg" data-setbg="{% static 'reporte/img/la_babilla.jpg' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="hs-text">
+                            <h2>La Babilla</h2>
+                            <h5 style="color:#000000">Ubicado en el barrio Ciudad Jardín entre la Avenida San Joaquín <br/>
+                                 y la carrera 108, y entre la Avenida Pasoancho y la calle 14
+
+                                .</h5>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
   </section>
 
@@ -94,12 +118,12 @@
                             <div class="single_carousel">
                                 <div class="single_testmonial text-center">
 
-                                    <img src="{% static 'reporte/img/about/about_humedal.jpg' %}" alt="">
+                                    <img src="{% static 'reporte/img/about/programas62.jpg' %}"  alt="">
                                 </div>
                             </div>
                             <div class="single_carousel">
                                 <div class="single_testmonial text-center">
-                                    <img src="{% static 'reporte/img/about/about_humedal.jpg' %}" alt="">
+                                    <img src="{% static 'reporte/img/about/programas7.jpg' %}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -158,7 +182,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="about_image">
-                            <img src="{% static 'reporte/img/about/about_humedal.jpg' %}" alt="">
+                            <img src="{% static 'reporte/img/about/programas8.jpg' %}" alt="">
                         </div>
 
                     </div>
@@ -176,13 +200,19 @@
                 <div class="col-xl-7 col-md-6">
                     <div class="action_heading">
                         <h3>Cuida la biodiversidad</h3>
-                        <p>Esteem spirit temper too say adieus who direct esteem. It look estee luckily or picture
-                            placing drawing.</p>
+                        <p>Ayudanos a proteger los humedales de nuestra ciudad, que tanto aportan 
+                            a la belleza paisajistica y al mantenimiento de las distintas especies.</p>
                     </div>
                 </div>
                 <div class="col-xl-5 col-md-6">
                     <div class="call_add_action">
-                        <a href="#" class="boxed-btn3">Haz tu aporte con una imagen</a>
+
+                        {% if  user.is_authenticated%}
+                        <a class="boxed-btn3" href="{% url 'reporte-create' %}">Haz tu aporte con una imagen</a>
+                        {% else %}
+                        <a class="boxed-btn3" href="{% url 'reporte-login1' %}">Haz tu aporte con una imagen</a>
+                        {% endif %}
+                        
                     </div>
                 </div>
             </div>
@@ -226,7 +256,14 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <a href="#" class="boxed-btn3">Comparte las fotos y videos de los humedales que visitas</a>
+
+                        {% if  user.is_authenticated%}
+                        <a class="boxed-btn3" href="{% url 'reporte-create' %}">Comparte las fotos y videos de los humedales que visitas</a>
+                        {% else %}
+                        <a class="boxed-btn3" href="{% url 'reporte-login1' %}">Comparte las fotos y videos de los humedales que visitas</a>
+                        {% endif %}
+                        
+                        
                     </div>
 
                 </div>

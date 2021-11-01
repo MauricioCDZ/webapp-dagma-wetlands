@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="blog_details">
-                    <a class="d-inline-block" href="single-blog.html">
+                    <a class="d-inline-block" href="{% url 'reporte-detail' reporte.id %}">
                         <h2>{{ reporte.titulo }}</h2>
                     </a>
                     <p>{{ reporte.descripcion }}

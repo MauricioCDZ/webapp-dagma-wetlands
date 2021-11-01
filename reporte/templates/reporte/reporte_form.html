@@ -33,7 +33,6 @@ form {
 
 </style>
 
-
 <div class="bradcam_area2 bradcam_basic_color">
     <div class="container">
       <div class="row">
@@ -61,18 +60,21 @@ form {
                   <form method="POST" enctype="multipart/form-data" >
                     {% csrf_token %}
   
-                    <h2>Reporte:</h2>
+                    <h2 class="d-flex justify-content-center">Aporte</h2>
                     <div class="item">
-                      <p>Titulo reporte</p>
+                      <p>Titulo aporte</p>
                       <div class="name-item">
                         <!--input type="text" name="name" placeholder="Ejm: Escombros en humedal la babilla"/-->
-                        {{ form.titulo}}
+                        <!--{{ form.titulo}}-->
+                        <input type="text" name="titulo" maxlength="100" required="" id="id_titulo" onkeypress="return isNumericKey(event)">
+                        
+                        
                        
                         <div class="item">
                           <p>Selecciona tipo aporte</p>
                           <div class="city-item">
-                            <select class='select-css' name="tipoReporte" required id="id_tipoReporte">
-                             
+                            <select class='select-css' name="tipoReporte"  id="id_tipoReporte" >
+                              
                             {% for x in form.tipoReporte %}
                             
                                 {{ x}}
@@ -81,22 +83,28 @@ form {
 
                         </div>
                         
-                       </div>
+                       
+                       <!-- classs item-->
+                       
+                            <p>Selecciona humedal</p>
+                            <div class="city-item">
+                              <select class='select-css' name="humedal" required id="id_humedal">
+                              
+                              {% for x in form.humedal %}
+                              
+                                  {{ x}}
+                              {% endfor %}
+                              </select>
 
-                       <div class="item">
-                        <p>Selecciona humedal</p>
-                        <div class="city-item">
-                          <select class='select-css' name="humedal" required id="id_humedal">
-                           
-                          {% for x in form.humedal %}
-                          
-                              {{ x}}
-                          {% endfor %}
-                          </select>
-
-                      </div>
+                          </div>
+                        </div>
                       
-                     </div>
+                        
+
+
+     
+
+
 
                       </div>
 
@@ -109,9 +117,9 @@ form {
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Descripción</label>
+             
                         
-                        
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="2"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="2">{{ form.descripcion.value}}</textarea>
                        
                       </div>
                       
@@ -127,25 +135,41 @@ form {
   
   
                     <div class="question">
-                      <p>Privacy Policy<span class="required">*</span></p>
+                      <p>Política de privacidad<span class="required">*</span></p>
                       <div class="question-answer checkbox-item">
                         <div>
                           <input type="checkbox" value="none" id="check_1" name="check" required/>
-                          <label for="check_1" class="check"><span>I agree to the <a href="https://www.w3docs.com/privacy-policy">privacy policy.</a></span></label>
+                          <label for="check_1" class="check"><span>Acepto la <a href="https://www.w3docs.com/privacy-policy">política de privacidad.</a></span></label>
                         </div>
                       </div>
                     </div>
                     {% if messages %}
-                      <ul class="messages">
+                      
                         {% for message in messages %}
-                          <li class="{{ message.tags }}">{{ message }}</li>
+                          <script>
+                            Swal.fire({
+                                "title":"Felicitaciones",
+                                "text":"{{message}}",
+                                "icon":"success",
+                                "confirmButtonColor":"#009603",
+                               
+
+                            })
+                            .then (function(result){
+                              if(result.isConfirmed){
+                                window.location.href = "/"
+                              }
+
+                            })
+                          </script>
+                         
                         {% endfor %}
-                      </ul>
+                      
                     {% endif %}
                     <script src='https://www.google.com/recaptcha/api.js'></script>
                     <div class="g-recaptcha" data-sitekey="6LdMsaUaAAAAAF89Df2n7WBfn-5cArmzayQfBSiu"></div>
 
-                    <div class="btn-block">
+                    <div class="d-flex justify-content-center">
                       <button type="submit" href="/">Enviar</button>
                     </div>
                   </form>
@@ -163,4 +187,24 @@ form {
         </div>
   
       </div>
+
+      <script> 
+        function isNumberKey(evt)
+        {
+          var charCode = (evt.which) ? evt.which : evt.keyCode;
+          if (charCode != 46 && charCode > 31 
+          && (charCode < 48 || charCode > 57))
+          return false;
+          return true;
+        }  
+        
+        
+        function isNumericKey(evt)
+        {
+          var charCode = (evt.which) ? evt.which : evt.keyCode;
+          if (charCode != 46 && charCode > 31 
+          && (charCode < 48 || charCode > 57))
+          return true;
+          return false;
+        } </script>
 {% endblock content %}

@@ -1,0 +1,157 @@
+
+{% extends "reporte/base.html" %}
+{% block content %}
+<style>
+.item {
+    position: relative;
+    margin: 10px 0;
+    }
+
+@media (min-width: 568px) {
+    .name-item, .city-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+    .name-item input, .city-item input {
+    width: calc(50% - 20px);
+    }
+    .city-item select {
+    width: calc(50% - 8px);
+    }
+    }
+
+form {
+    width: 100%;
+    padding: 20px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 0 20px 0 #386d2d; 
+    }
+
+
+
+</style>
+
+
+<div class="bradcam_area2 bradcam_basic_color">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 col-l-12 col-m-12 col-sm-12 col-12">
+          <div class="bradcam_text text-center">
+            <h3 style="font-size: 40px; color: #fff; font-weight: 400; margin-bottom: 0; text-transform: capitalize;">Modificar Reporte</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+    <div class="whole-wrap">
+        <div class="container box_1170">
+          <div class="section-top-border">
+            <div class="row">
+              <div class="col-xl-3"></div>
+                <div class="col-xl-6">
+                  <form method="POST" enctype="multipart/form-data" >
+                    {% csrf_token %}
+  
+                    <h2>Reporte:</h2>
+                    <div class="item">
+                      <p>Titulo reporte</p>
+                      <div class="name-item">
+                        <!--input type="text" name="name" placeholder="Ejm: Escombros en humedal la babilla"/-->
+                        {{ form.titulo}}
+                       
+                        <div class="item">
+
+                          
+                          <p>Selecciona status del reporte en el blog</p>
+                          <div class="city-item">
+                            <select class='select-css' name="status" required id="id_status">
+                             
+                            {% for x in form.status %}
+                            
+                                {{ x}}
+                            {% endfor %}
+                            </select>
+
+                        </div>
+                        
+                       </div>
+                      
+
+
+
+                       <div class="item">
+                        <p>Selecciona relevancia del reporte</p>
+                        <div class="city-item">
+                          <select class='select-css' name="importancia" required id="id_importancia">
+                           
+                          {% for x in form.importancia %}
+                          
+                              {{ x}}
+                          {% endfor %}
+                          </select>
+
+                      </div>
+                      
+                     </div>
+
+                      </div>
+
+
+
+                    </div>
+
+
+                    
+
+                  
+
+  
+  
+  
+                    <div class="question">
+                      <p>Privacy Policy<span class="required">*</span></p>
+                      <div class="question-answer checkbox-item">
+                        <div>
+                          <input type="checkbox" value="none" id="check_1" name="check" required/>
+                          <label for="check_1" class="check"><span>I agree to the <a href="https://www.w3docs.com/privacy-policy">privacy policy.</a></span></label>
+                        </div>
+                      </div>
+                    </div>
+                    {% if messages %}
+                      <ul class="messages">
+                        {% for message in messages %}
+                          <li class="{{ message.tags }}">{{ message }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                    <script src='https://www.google.com/recaptcha/api.js'></script>
+                    <div class="g-recaptcha" data-sitekey="6LdMsaUaAAAAAF89Df2n7WBfn-5cArmzayQfBSiu"></div>
+
+                    <div class="btn-block">
+                      <button type="submit" href="/">Enviar</button>
+                    </div>
+                  </form>
+  
+  
+  
+  
+                </div>
+  
+  
+  
+            </div>
+  
+          </div>
+        </div>
+  
+      </div>
+{% endblock content %}

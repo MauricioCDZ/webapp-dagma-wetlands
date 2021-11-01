@@ -10,7 +10,9 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
+#from users.apps import UsersConfig
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'graduation_project.settings')
-
+#os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'graduation_project.settings')
+#os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'graduation_project.settings')
 application = get_wsgi_application()
+#print("HOLAAAAAAAAA")

@@ -1,0 +1,39 @@
+{% extends "reporte/base.html" %}
+{% load static %}
+{% block content %}
+
+    		<!-- bradcam_area  -->
+		<div class="bradcam_area bradcam_bg_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="bradcam_text text-center">
+                            <h3>Fauna Acuática El Retiro</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ bradcam_area  -->
+        <div class="whole-wrap">
+            <div class="container box_1170">
+                <div class="section-top-border">
+                    <h3>Galeria Humedal El Retiro</h3>
+                    <div class="row gallery-item">
+                        {% for pez in humedal %}
+                        <div class="col-md-4">
+                            <a href="{% static pez.foto %}" class="img-pop-up " title="{{pez.nombre}}">
+                                <div class="single-gallery-image" style="background: url({% static pez.foto %});"></div>
+                            </a>
+                            <p><strong>Especie:</strong>{{pez.nombre}}</p>
+                            <p><strong>Familia:</strong>{{pez.familia}}</p>
+                        </div>
+
+                        {% endfor %}
+
+   
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

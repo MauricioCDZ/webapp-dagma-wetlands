@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "humedales",
+  "private_key_id": "cea5de65aaddbde21f11d02eb629283943c5b4ad",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQDGAibgT2qvCoc9\nvTxEs37CNIfe2117wXu/D6DgdOAfLF0UN+ZDC02C3RiqxbQMOGa9UtsFMKHVmh6V\nzs/RJX9qWZ1ctiKFEU2U62z7aVtTGj5yTrJ/BHAZk+X9IZKC+u702X3wN58y2oNx\nVr2hfq23kFiyxxUt1b9iDECzWC4aKQ2P6Sbbld03ofDBO9drtk/VG01X3qFqQr9m\n1m357DznIZdT7arASQmWwHIy+uaoAY1uVDuNJW9uVwHVOwfMNwtCVafijfAzg4Il\n6MpuEV8/xOxJcOnpCryLWIa7hKQvkzKgJQygfq9G6ZYp4hm57ww3RTIzlE+it6Ur\nVLzAGwwlAgMBAAECgf8MYBYN7ui8B+xr72fU42MIwD+9rfgpw+34AwILBUL8r8kh\nelzp08sEYs0n3zNhkCTbsFIAAQocT4WZ11MlvzI3c2JiaP+/UVWH+S7Wh78tcnZ0\nrnZ5ec2Hy7aUG4UMqqJEq1MzsEZC52VPsBwp+8DfuCXTBp5MPw+3EQz6KIi5GbuU\n4fL92m6SERHBnI3+mtIhY/VlKxkE4kSB/rA0p2TpYRc5yg1CtRbACg1PSsTCv51J\nGnXFRV/vM2cjf8XWuDajOtkV/FCqIosUps9uQn25NgzhcmPSWMNl3MZP6XMoOCJG\nnOSfFHVVqMHV+zGbRqSqrVb9qOTILQKole0BksECgYEA6lG80htLeFBKMeumygV9\nbWJbxQNu3oppMO9D4MxMZ3vm/PnftlF4Aw6BsowhRpMfheouJrjqwSuU1Wr1W3Ch\nWYxAEAZcsLw1NEoDSpYX2mOgNgpA+LPhmphTEPa6TUtcmZRRTCb4eiDiYBeJYwnm\noHjhRDRNTqhyzYQ4DXrpjqcCgYEA2FRT1sNznh9dgaqwE7Or1q9eG8Jn3+Ak+DNf\nafgmPF7akKv5g6KrbzYx6hFYXzycBviqJtiIWvmMxvvXFvO02/790s7a1RAa+mjH\nPobaxSDoVMc7nOlfxgkCsvnOJcmB8R/hDLn07oQlviaIPUiEbKlD009I2ekoKk2T\nVc01VFMCgYAY/tUkmJLJZ88yWg/1tvY1R+vALWiTRrKH7M4R2dlApL/0Nnd9zFz/\n/nkpYbde/uy67Us1CD7KkmqTBZDcyzv7AHIJA5S5qaoHROnq9+3ddwktGpTpss6b\nHiqmQZuICUT8gQzXEcUpyf47/+bA8NpwPdTR4L5qaJ+ueq88COOHOwKBgCyfCEQO\nQLTm51StrnAB6Xn45kJ3kRF+nGGNxyqGguyE7DRXJLpgPVhNJ3KObVoHmG9fr0kf\n9NA/FSieHbmgPzf5msV24XB9R/NK1X4yNsHejc2e4s703Epu5V2hZUIqFGF2H+eO\nG9Vu8JIORJ/Pa3E2YMUfX3mDPEOtiKx0DYH9AoGBANlpmmsC/0om93Erkg59olPP\nMtnjfGMxvjIB87wPbyFvzTVt2cMKL5+NaAhUT0/QQ0XL/9qwAkiE0A1GZerxpV4d\nOKq3II9Ygd0IgpMY+mb2/it/Pdi+BkzjotBVNydSyTCuvByf9uG67BCnV2P9pJbS\nggWhV3MdZRWRqwaWP4BU\n-----END PRIVATE KEY-----\n",
+  "client_email": "vision-api@humedales.iam.gserviceaccount.com",
+  "client_id": "104652724402619444962",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vision-api%40humedales.iam.gserviceaccount.com"
+}

@@ -44,8 +44,13 @@
                                     <small class="text-danger ml-2">{{ err }}</small><br>
                                 {% endfor %}
                             </div>
-                    
+                            <div class="border-top pt-3">
+                                <small class="text-muted">
+                                    Olvidó su contraseña? <a class="ml-2" href="{% url 'password_reset' %}">Clic Aquí</a>
+                                </small>
+                            </div>
                         </div>
+
                         <div class="col-xl-3"></div>
                     </div>
                 </div>
@@ -77,7 +82,7 @@
     </form>
     <div class="border-top pt-3">
         <small class="text-muted">
-            Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+            Necesita una cuenta? <a class="ml-2" href="{% url 'register' %}">Registrate ahora</a>
         </small>
     </div>
 </div>

@@ -3,7 +3,7 @@
     <footer class="footer-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-5 col-md-6 col-sm-6">
                     <div class="fs-about">
                         <div class="fa-logo">
                             <a href="/">
@@ -11,13 +11,13 @@
                                 <p style="color:#fffbfb";>Humedales Cali</p>
                             </a>
                         </div>
-                        <p>Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.</p>
+                        <p>Aplicativo web para permitir la participación de la ciudadanía en
+                            el cuidado y conservación de los humedales del sur de Cali.</p>
                         <div class="fa-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/DagmaCali/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/DagmaOficial"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/channel/UCupg4peiWiDeh4qeZYyZD7Q"><i class="fa fa-youtube-play"></i></a>
+                            <a href="https://www.instagram.com/dagmaoficial/?hl=es-la"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -25,43 +25,32 @@
                     <div class="fs-widget">
                         <h5>Instagram</h5>
                         <div class="fw-instagram">
-                            <img src="img/instagram/insta-1.jpg" alt="">
-                            <img src="img/instagram/insta-2.jpg" alt="">
-                            <img src="img/instagram/insta-3.jpg" alt="">
+                            <a href="https://twitter.com/AlcaldiaDeCali/status/1441396774485340161/photo/1"><img src="https://pbs.twimg.com/media/FADet8MUcAgwkEf?format=jpg&name=900x900" alt=""> </a>
+                            <a href="https://twitter.com/DagmaOficial/photo"> <img src="https://pbs.twimg.com/profile_images/805829856365776897/bM0Oqtk7_400x400.jpg" alt=""></a>
+                            <a href="https://twitter.com/DagmaOficial/status/1439003991510327297/photo/1"><img src="https://pbs.twimg.com/media/E_hdwDPWUAkxGBz?format=jpg&name=medium" alt=""> </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="fs-widget">
-                        <h5>Quick links</h5>
+                        <h5>Atajos</h5>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{% url 'reporte-home' %}">Inicio</a></li>
+                            <li><a href="{% url 'reporte-nuestraHistoria' %}">Historia</a></li>
+                            <li><a href="{% url 'reporte-involucrate' %}">Contacto</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Portfolio</a></li>
-                            <li><a href="#">Services</a></li>
+                            <li><a href="{% url 'reporte-garzas-flora' %}">Galeria</a></li>
+                            <li><a href="{% url 'reporte-blog' %}">Blog</a></li>
+                            <li><a href="{% url 'reporte-recursos-videos' %}">Videos</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="fs-widget">
-                        <h5>Subscribe</h5>
-                        <p>Imolor amet consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                        <div class="fw-subscribe">
-                            <form action="#">
-                                <input type="text" placeholder="Email">
-                                <button type="submit"><i class="fa fa-send"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-lg-12">
                     <div class="copyright-text">
                         <p style="color:#ffffff"; ><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Esta pagina fue realizada con <i class="fa fa-heart" aria-hidden="true"></i> by <a style="color:#ffffff"; href="https://colorlib.com" target="_blank">Mauricio Cortes y Juan Ariza</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Esta pagina fue realizada con <i class="fa fa-heart" aria-hidden="true"></i> by <a style="color:#ffffff"; href="#" target="_blank">Mauricio Cortes y Juan Ariza</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     </div>
                 </div>
@@ -89,7 +78,7 @@
     <script src="{% static 'reporte/js/main1.js' %}"></script>
     <!-- <script src="js/gijgo.min.js"></script> -->
     <script src="{% static 'reporte/js/slick.min.js' %}"></script>
-
+    <script src="{% static 'reporte/js/onlytext.js' %}"></script>
     <script src="{% static 'reporte/js/swiper-bundle.js' %}"></script>
     <script src="{% static 'reporte/js/swiper-bundle.min.js' %}"></script>
 
@@ -101,6 +90,9 @@
     <script src="{% static 'reporte/js/jquery.form.js' %}"></script>
     <script src="{% static 'reporte/js/jquery.validate.min.js' %}"></script>
     <script src="{% static 'reporte/js/mail-script.js' %}"></script>
+
+    <!-- SWEET ALERT-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
     <script src="{% static 'reporte/js/main.js' %}"></script>
