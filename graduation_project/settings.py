@@ -123,7 +123,7 @@ if os.getenv('GAE_APPLICATION', None):
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '/cloudsql/humedales-cali:us-central1:polls-instance',
             'USER': 'mauro',
-            'PASSWORD': 'rc4vfvcLoe3cqz8f',
+            'PASSWORD': '*',
             'NAME': 'main',
         }
     }
