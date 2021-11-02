@@ -6,7 +6,7 @@ from reporte.models import Reporte
 from django.views.decorators.http import require_http_methods
 
 
-@require_http_methods(["POST"])  # Sensitive
+@require_http_methods(["GET","POST"])  # Sensitive
 def register(request):
     form = UserAdminCreationForm()
     if request.method == 'POST':
