@@ -27,13 +27,13 @@ from .filters import ReporteFilter, BlogFilter
 from django.views.decorators.http import require_http_methods
 
 
-@require_http_methods(["GET", "POST"])  # Sensitive
+@require_http_methods(["GET"])
 def home(request):
   
     return render(request, 'reporte/example.html')
 
 
-@require_http_methods(["GET", "POST"])  # Sensitive
+@require_http_methods(["GET"])
 def about(request):
     context = {
          'reportes': Reporte.objects.all()
