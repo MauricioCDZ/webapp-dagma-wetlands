@@ -337,7 +337,7 @@ class ReporteCreateViewInvitado(CreateView):
 def registro(request):
     return render(request, 'reporte/registrate.html', {'title': 'About'})
 
-
+@require_http_methods(["GET"])  # Sensitive
 def login1(request):
     return render(request, 'reporte/login1.html', {'title': 'About'})
 
@@ -361,6 +361,8 @@ def blog(request):
 def misreportes(request):
     return render(request, 'reporte/mis_reportes.html', {'title': 'About'})
 
+
+@require_http_methods(["GET"])  # Sensitive
 @allowed_users(allowed_roles=['staff','admin'])
 def gestionarBlog(request):
     
@@ -383,7 +385,7 @@ def gestionarBlog(request):
 
 
 
-
+@require_http_methods(["GET"])  # Sensitive
 @allowed_users(allowed_roles=['staff','admin'])
 def gestionarReportes(request):
     
