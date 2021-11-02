@@ -341,7 +341,7 @@ def registro(request):
 def login1(request):
     return render(request, 'reporte/login1.html', {'title': 'About'})
 
-
+@require_http_methods(["GET"])  # Sensitive
 def blog(request):
 
 
@@ -357,7 +357,7 @@ def blog(request):
 #@login_required
 #def user(request):
 #    return render(request, 'reporte/user.html', {'title': 'About'})
-
+@require_http_methods(["GET"])  # Sensitive
 def misreportes(request):
     return render(request, 'reporte/mis_reportes.html', {'title': 'About'})
 
@@ -406,6 +406,8 @@ def gestionarReportes(request):
 def count_posts_of(user):
     return Reporte.objects.filter(author=user.id).count()
 
+
+@require_http_methods(["GET"])  # Sensitive
 @allowed_users(allowed_roles=['staff','admin'])
 def gestionarUsuarios(request):
     reportes= Reporte.objects.all()
