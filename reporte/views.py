@@ -24,14 +24,16 @@ from django.core.mail import send_mail
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator
 from .filters import ReporteFilter, BlogFilter
+from django.views.decorators.http import require_http_methods
 
 
+@require_http_methods(["GET", "POST"])  # Sensitive
 def home(request):
   
     return render(request, 'reporte/example.html')
 
 
-
+@require_http_methods(["GET", "POST"])  # Sensitive
 def about(request):
     context = {
          'reportes': Reporte.objects.all()
@@ -175,6 +177,7 @@ class ReporteDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+@require_http_methods(["GET", "POST"])  # Sensitive
 def involucrate(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -192,76 +195,105 @@ def involucrate(request):
         return render(request, 'reporte/involucrate.html', {'title': 'Involucrate'})
     else:
         return render(request, 'reporte/involucrate.html', {'title': 'Involucrate'})
+
+
+@require_http_methods(["GET", "POST"])  # Sensitive        
 def nuestraHistoria(request):
     return render(request, 'reporte/nuestraHistoria.html', {'title': 'About'})
+
+@require_http_methods(["GET", "POST"])  # Sensitive
 def LaBabilla(request):
     humedal = Humedal.objects.get(nombre= "La Babilla")
     return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'LaBabilla', 'humedal' : humedal})
+
+@require_http_methods(["GET", "POST"])  # Sensitive
 def ElRetiro(request):
     return render(request, 'reporte/humedales/ElRetiro.html', {'title': 'ElRetiro'})
+
+@require_http_methods(["GET", "POST"])  # Sensitive
 def EcoparqueLasGarzas(request):
     return render(request, 'reporte/humedales/EcoparqueLasGarzas.html', {'title': 'EcoparqueLasGarzas'})
 
 
 
 ####################### HUMEDAL LA BABILLA GALERIA
+@require_http_methods(["GET", "POST"])  # Sensitive
 def babilla_flora(request):
     humedal = Humedal.objects.get(nombre= "La Babilla")
     flora = humedal.flora.all()
     return render(request, 'reporte/humedales/galeria_flora_babilla.html', {'title': 'About','humedal': flora})
-
+@require_http_methods(["GET", "POST"])  # Sensitive
 def babilla_fauna(request):
     humedal = Humedal.objects.get(nombre= "La Babilla")
     fauna = humedal.faunaTerrestre.all()
     return render(request, 'reporte/humedales/galeria_fauna_babilla.html', {'title': 'About', 'humedal': fauna})
+@require_http_methods(["GET", "POST"])  # Sensitive
 def babilla_acuatica(request):
     humedal = Humedal.objects.get(nombre= "La Babilla")
     fauna_acutica = humedal.FaunaAcuatica.all()
     return render(request, 'reporte/humedales/galeria_acuatica_babilla.html', {'title': 'About','humedal': fauna_acutica})
+@require_http_methods(["GET", "POST"])  # Sensitive
 ####################### HUMEDAL LAS GARZAS GALERIA
 def garzas_flora(request):
     humedal = Humedal.objects.get(nombre= "Ecoparque Las Garzas")
     flora = humedal.flora.all()
     return render(request, 'reporte/humedales/galeria_flora_garzas.html', {'title': 'About','humedal':flora})
-
+@require_http_methods(["GET", "POST"])  # Sensitive
 def garzas_fauna(request):
     humedal = Humedal.objects.get(nombre="Ecoparque Las Garzas")
     fauna = humedal.faunaTerrestre.all()
     return render(request, 'reporte/humedales/galeria_fauna_garzas.html', {'title': 'About', 'humedal': fauna})
+
+@require_http_methods(["GET", "POST"])  # Sensitive    
 def garzas_acuatica(request):
     humedal = Humedal.objects.get(nombre= "Ecoparque Las Garzas")
     fauna_acutica = humedal.FaunaAcuatica.all()
     return render(request, 'reporte/humedales/galeria_acuatica_garzas.html', {'title': 'About','humedal':fauna_acutica})
+
 ####################### HUMEDAL EL RETIRO GALERIA
+@require_http_methods(["GET", "POST"])  # Sensitive
 def retiro_flora(request):
     humedal = Humedal.objects.get(nombre="El Retiro")
     flora = humedal.flora.all()
     return render(request, 'reporte/humedales/galeria_flora_retiro.html', {'title': 'About','humedal':flora})
 
+
+@require_http_methods(["GET", "POST"])  # Sensitive
 def retiro_fauna(request):
     humedal = Humedal.objects.get(nombre= "El Retiro")
     fauna = humedal.faunaTerrestre.all()
     return render(request, 'reporte/humedales/galeria_fauna_retiro.html', {'title': 'About', 'humedal': fauna})
+
+@require_http_methods(["GET", "POST"])  # Sensitive    
 def retiro_acuatica(request):
     humedal = Humedal.objects.get(nombre= "El Retiro")
     fauna_acutica = humedal.FaunaAcuatica.all()
     return render(request, 'reporte/humedales/galeria_acuatica_retiro.html', {'title': 'About','humedal': fauna_acutica})
 
 #######################
-
+@require_http_methods(["GET", "POST"])  # Sensitive
 def planes_manejo(request):
     return render(request, 'reporte/recursos/planes_manejo.html', {'title': 'About'})
 
+@require_http_methods(["GET", "POST"])  # Sensitive
 def programas(request):
     return render(request, 'reporte/recursos/programas.html', {'title': 'About'})
 
+
+@require_http_methods(["GET", "POST"])  # Sensitive
 def videos(request):
     return render(request, 'reporte/recursos/videos.html', {'title': 'videos'})
+
+@require_http_methods(["GET", "POST"])  # Sensitive
 def registrate(request):
     return render(request, 'reporte/registrate.html', {'title': 'registrate'})
+
+@require_http_methods(["GET", "POST"])  # Sensitive
 def quejas(request):
     return render(request, 'reporte/quejas.html', {'title': 'quejas'})
 ########################
+
+@require_http_methods(["GET", "POST"])  # Sensitive
 def hacer_reporte(request):
     return render(request, 'reporte/hacer_reporte.html', {'title': 'About'})
 
