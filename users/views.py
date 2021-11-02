@@ -3,9 +3,10 @@ from .forms import UserAdminCreationForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from reporte.models import Reporte
+from django.views.decorators.http import require_http_methods
 
 
-
+@require_http_methods(["GET","POST"])  # Sensitive
 def register(request):
     form = UserAdminCreationForm()
     if request.method == 'POST':
@@ -17,6 +18,7 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 
+@require_http_methods(["GET","POST"])  # Sensitive
 @login_required
 def profile(request):
 
