@@ -123,12 +123,12 @@ if os.getenv('GAE_APPLICATION', None):
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '/cloudsql/humedales-cali:us-central1:polls-instance',
             'USER': 'mauro',
-            'PASSWORD': 'rc4vfvcLoe3cqz8f',
+            'PASSWORD': '*',
             'NAME': 'main',
         }
     }
 else:
-    print("Hablame")
+    
     # Running locally so connect to either a local MySQL instance or connect to
     # Cloud SQL via the proxy. To start the proxy via command line:
     #
@@ -142,7 +142,7 @@ else:
             'PORT': '5432',
             'NAME': 'main',
             'USER': 'mauro',
-            'PASSWORD': 'rc4vfvcLoe3cqz8f',
+            'PASSWORD': '*',
         }
     }
 # [END db_setup]
@@ -199,6 +199,6 @@ MAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'calihumedalesurbanos@gmail.com'
-EMAIL_HOST_PASSWORD = 'Wetlands4981.'
+EMAIL_HOST_PASSWORD = '*'
 EMAIL_USE_TLS = True
 
