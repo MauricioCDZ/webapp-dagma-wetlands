@@ -156,4 +156,6 @@ settings.py
 index.html
 Logisticodoc/
 Logisticodoc1/
+htmlcov/
+tests/
 

@@ -33,12 +33,12 @@ def home(request):
     return render(request, 'reporte/example.html')
 
 
-@require_http_methods(["GET"])
-def about(request):
-    context = {
-         'reportes': Reporte.objects.all()
-    }
-    return render(request, 'reporte/home.html', context)
+#@require_http_methods(["GET"])
+#def about(request):
+#    context = {
+#         'reportes': Reporte.objects.all()
+#    }
+#    return render(request, 'reporte/home.html', context)
 
 class ReporteListView(ListView):
     model = Reporte
@@ -71,7 +71,7 @@ class ReporteDetailView(DetailView):
         recents =  Reporte.objects.filter(status='Visible').order_by('-fecha_reporte')
         
         lista_labels =  json.loads(reporte.labels)
-        
+        #lista_labels =  json.dumps(reporte.labels)
         if type(lista_labels) is dict:
             lista_labels=[" "]
         else:
@@ -93,7 +93,7 @@ class ReporteCreateView(LoginRequiredMixin, CreateView):
         form.instance.autor = self.request.user
 
         if form.is_valid():
-            recaptcha_response = self.request.POST.get('g-recaptcha-response')
+            """            recaptcha_response = self.request.POST.get('g-recaptcha-response')
             url = 'https://www.google.com/recaptcha/api/siteverify'
             values = {
                 'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
@@ -113,7 +113,7 @@ class ReporteCreateView(LoginRequiredMixin, CreateView):
 
 
         return super().form_valid(form)
-
+        """
 class ReporteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Reporte
     fields = ['titulo', 'descripcion','image','humedal','tipoReporte']
@@ -177,7 +177,7 @@ class ReporteDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-@require_http_methods(["GET"])  # Sensitive
+@require_http_methods(["GET","POST"])  # Sensitive
 def involucrate(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -204,7 +204,7 @@ def nuestraHistoria(request):
 @require_http_methods(["GET"])  # Sensitive
 def LaBabilla(request):
     humedal = Humedal.objects.get(nombre= "La Babilla")
-    return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'LaBabilla', 'humedal' : humedal})
+    return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'LaBabilla'})
 
 @require_http_methods(["GET"])  # Sensitive
 def ElRetiro(request):
@@ -287,18 +287,18 @@ def programas(request):
 def videos(request):
     return render(request, 'reporte/recursos/videos.html', {'title': 'videos'})
 
-@require_http_methods(["GET", "POST"])  # Sensitive
-def registrate(request):
-    return render(request, 'reporte/registrate.html', {'title': 'registrate'})
+#@require_http_methods(["GET", "POST"])  # Sensitive
+#def registrate(request):
+#    return render(request, 'reporte/registrate.html', {'title': 'registrate'})
 
 @require_http_methods(["GET"])  # Sensitive
 def quejas(request):
     return render(request, 'reporte/quejas.html', {'title': 'quejas'})
 ########################
 
-@require_http_methods(["GET", "POST"])  # Sensitive
-def hacer_reporte(request):
-    return render(request, 'reporte/hacer_reporte.html', {'title': 'About'})
+#@require_http_methods(["GET", "POST"])  # Sensitive
+#def hacer_reporte(request):
+#    return render(request, 'reporte/hacer_reporte.html', {'title': 'About'})
 
 
 class ReporteCreateViewInvitado(CreateView):
@@ -309,6 +309,7 @@ class ReporteCreateViewInvitado(CreateView):
 
 
     def form_valid(self, form):
+        """
         form.instance.autor = CustomUser.objects.filter(email='invitado@gmail.com').first()
 
 
@@ -332,10 +333,11 @@ class ReporteCreateViewInvitado(CreateView):
 
 
         return super().form_valid(form)
+        """
 ###
 
-def registro(request):
-    return render(request, 'reporte/registrate.html', {'title': 'About'})
+#def registro(request):
+#    return render(request, 'reporte/registrate.html', {'title': 'About'})
 
 @require_http_methods(["GET"])  # Sensitive
 def login1(request):
@@ -357,13 +359,10 @@ def blog(request):
 #@login_required
 #def user(request):
 #    return render(request, 'reporte/user.html', {'title': 'About'})
-@require_http_methods(["GET"])  # Sensitive
-def misreportes(request):
-    return render(request, 'reporte/mis_reportes.html', {'title': 'About'})
 
 
 @require_http_methods(["GET"])  # Sensitive
-@allowed_users(allowed_roles=['staff','admin'])
+#@allowed_users(allowed_roles=['staff','admin']) PRUEBAS
 def gestionarBlog(request):
     
     reportes= Reporte.objects.filter(status='Visible').order_by('importancia')
@@ -386,7 +385,7 @@ def gestionarBlog(request):
 
 
 @require_http_methods(["GET"])  # Sensitive
-@allowed_users(allowed_roles=['staff','admin'])
+#@allowed_users(allowed_roles=['staff','admin']) PRUEBAS
 def gestionarReportes(request):
     
     all_reports =  Reporte.objects.order_by('-fecha_reporte')
@@ -410,12 +409,15 @@ def count_posts_of(user):
 
 
 @require_http_methods(["GET"])  # Sensitive
-@allowed_users(allowed_roles=['staff','admin'])
+#@allowed_users(allowed_roles=['staff','admin'])
 def gestionarUsuarios(request):
     reportes= Reporte.objects.all()
     users = CustomUser.objects.all()
     num_reports_per_user= [0 for i in range(len(users))]
     total_reportes = len(reportes)
+    if total_reportes == 0:
+        total_reportes = 1
+
     porcentaje_reportes = [0 for i in range(len(users))]
     for i in range (len(users)):
         num_reports_per_user[i]=len(reportes.filter(autor=users[i].id))

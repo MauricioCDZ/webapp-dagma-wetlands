@@ -16,6 +16,7 @@ from .views import (
 urlpatterns = [
     path('', views.home, name='reporte-home'),
     path('nuestra_historia/', views.nuestraHistoria, name='reporte-nuestraHistoria'),
+
     path('humedales/la_babilla/', views.LaBabilla, name='reporte-humedales-lababilla'),
     path('humedales/el_retiro/', views.ElRetiro, name='reporte-humedales-ElRetiro'),
     path('humedales/ecoparque_las_garzas/', views.EcoparqueLasGarzas, name='reporte-humedales-EcoparqueLasGarzas'),
@@ -34,7 +35,6 @@ urlpatterns = [
     path('hacer_reporte/', ReporteCreateViewInvitado.as_view() , name='reporte-hacer-reporte'),
     path('involucrate/', views.involucrate, name='reporte-involucrate'),
     path('blog/', views.blog, name='reporte-blog'),
-    path('mis_reportes/', views.misreportes, name='reporte-mis-reportes'),
     path('about/', ReporteListView.as_view() , name='reporte-about'),
     path('quejas/', views.quejas, name='reporte-quejas'),
     path('administrador/gestionar_blog/', views.gestionarBlog, name='reporte-administrador-gestionarBlog'),

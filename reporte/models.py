@@ -27,6 +27,7 @@ def validate_image(image):
 	limit_mb = 10
 	if file_size > limit_mb * 1024 * 1024:
 		raise ValidationError("Max size of file is %s MB" % limit_mb)
+
 class Reporte(models.Model):
 	autor = models.ForeignKey(User,on_delete=models.CASCADE, null=False)
 	humedal = models.ForeignKey('Humedal', on_delete=models.CASCADE, null=False)
@@ -53,6 +54,7 @@ class Reporte(models.Model):
 		#super().save()
 
 		#img = Image.open(self.image)
+		#print(self.autor.name)
 		if self.autor.name != '':
 			print(self.autor)
 			self.autor = self.autor
