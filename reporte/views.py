@@ -54,17 +54,16 @@ class UserReporteListView(ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        #user = get_object_or_404(CustomUser, email=self.kwargs.get('email'))
+        
         user =  CustomUser.objects.filter(email = self.request.user).first()
 
         return Reporte.objects.filter(autor=user).order_by('-fecha_reporte')
-        #return Reporte.objects.get(autor=self.kwargs['name']).order_by('-fecha_reporte')
+        
 
 
 class ReporteDetailView(DetailView):
     model = Reporte
-    #labels1 = self.labels
-    #labels = json.loads(labels,object_hook=as_python_object)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         reporte = self.get_object()
@@ -81,7 +80,6 @@ class ReporteDetailView(DetailView):
         context['labels'] = lista_labels
         return context
 
-
 class ReporteCreateView(LoginRequiredMixin, CreateView):
     model = Reporte
     fields = ['titulo', 'descripcion','image','humedal','tipoReporte']
@@ -93,7 +91,7 @@ class ReporteCreateView(LoginRequiredMixin, CreateView):
         form.instance.autor = self.request.user
 
         if form.is_valid():
-            """            recaptcha_response = self.request.POST.get('g-recaptcha-response')
+            recaptcha_response = self.request.POST.get('g-recaptcha-response')
             url = 'https://www.google.com/recaptcha/api/siteverify'
             values = {
                 'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
@@ -113,7 +111,7 @@ class ReporteCreateView(LoginRequiredMixin, CreateView):
 
 
         return super().form_valid(form)
-        """
+        
 class ReporteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Reporte
     fields = ['titulo', 'descripcion','image','humedal','tipoReporte']
@@ -204,7 +202,7 @@ def nuestraHistoria(request):
 @require_http_methods(["GET"])  # Sensitive
 def LaBabilla(request):
     humedal = Humedal.objects.get(nombre= "La Babilla")
-    return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'LaBabilla'})
+    return render(request, 'reporte/humedales/LaBabilla.html', {'title': 'LaBabilla','humedal':humedal})
 
 @require_http_methods(["GET"])  # Sensitive
 def ElRetiro(request):
@@ -309,9 +307,9 @@ class ReporteCreateViewInvitado(CreateView):
 
 
     def form_valid(self, form):
-        """
+        
         form.instance.autor = CustomUser.objects.filter(email='invitado@gmail.com').first()
-
+        
 
         if form.is_valid():
             recaptcha_response = self.request.POST.get('g-recaptcha-response')
@@ -333,11 +331,7 @@ class ReporteCreateViewInvitado(CreateView):
 
 
         return super().form_valid(form)
-        """
-###
-
-#def registro(request):
-#    return render(request, 'reporte/registrate.html', {'title': 'About'})
+        
 
 @require_http_methods(["GET"])  # Sensitive
 def login1(request):
@@ -362,7 +356,7 @@ def blog(request):
 
 
 @require_http_methods(["GET"])  # Sensitive
-#@allowed_users(allowed_roles=['staff','admin']) PRUEBAS
+@allowed_users(allowed_roles=['staff','admin']) 
 def gestionarBlog(request):
     
     reportes= Reporte.objects.filter(status='Visible').order_by('importancia')
@@ -385,7 +379,7 @@ def gestionarBlog(request):
 
 
 @require_http_methods(["GET"])  # Sensitive
-#@allowed_users(allowed_roles=['staff','admin']) PRUEBAS
+@allowed_users(allowed_roles=['staff','admin']) 
 def gestionarReportes(request):
     
     all_reports =  Reporte.objects.order_by('-fecha_reporte')
@@ -409,7 +403,7 @@ def count_posts_of(user):
 
 
 @require_http_methods(["GET"])  # Sensitive
-#@allowed_users(allowed_roles=['staff','admin'])
+@allowed_users(allowed_roles=['staff','admin'])
 def gestionarUsuarios(request):
     reportes= Reporte.objects.all()
     users = CustomUser.objects.all()

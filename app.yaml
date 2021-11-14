@@ -25,7 +25,7 @@ env_variables:
 
 handlers:
 # This configures Google App Engine to serve the files in the app's static
-# directory.
+# directory.	
 - url: /static
   static_dir: static/
 

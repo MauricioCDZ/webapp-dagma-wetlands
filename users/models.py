@@ -7,6 +7,8 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from PIL import Image
+from django.core.files.storage import default_storage as storage
+from io import BytesIO
 
 class CustomUserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
@@ -53,7 +55,7 @@ class CustomUser(AbstractUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.png', upload_to='profile_pics')
+    image = models.ImageField(default='profile_pics/default.jpg', upload_to='profile_pics')
 
     def __str__(self):
         return f'{self.user.name} Profile'
@@ -61,9 +63,19 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         super().save()
 
-        img = Image.open(self.image.path)
+        img = Image.open(self.image)
+        
 
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
+            fh = storage.open(self.image.name,"w")
+
+            #imgfile = BytesIO(dec)
             img.thumbnail(output_size)
-            img.save(self.image.path)
+            fh.close()
+
+            
+            #picture_format = 'png'
+            
+
+            #img.save(self.image)
