@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, get_object_or_404
 from .models import *
 from users.models import CustomUser
@@ -47,7 +48,7 @@ class ReporteListView(ListView):
     ordering = ['-fecha_reporte']   
 
 
-class UserReporteListView(ListView):
+class UserReporteListView(LoginRequiredMixin,ListView):
     model = Reporte
     template_name = 'reporte/user_reports.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'reportes'
@@ -133,7 +134,7 @@ class ReporteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     
 
-        if self.request.user == reporte.autor or self.request.user.name in staff_list:
+        if self.request.user == reporte.autor or self.request.user.name in staff_list or self.request.user.is_staff:
             print(staff_list)
             return True
         return False
@@ -171,7 +172,7 @@ class ReporteDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         reporte = self.get_object()
-        if self.request.user == reporte.autor:
+        if self.request.user == reporte.autor or self.request.user.is_superuser or self.request.user.is_staff:
             return True
         return False
 
@@ -324,10 +325,10 @@ class ReporteCreateViewInvitado(CreateView):
             result = json.loads(response.read().decode())
             if result['success']:
                 form.save()
-                messages.success(self.request, 'New comment added with success!')
+                messages.success(self.request, 'Nuevo aporte subido con exito!')
             else:
                 messages.error(self.request, 'Invalid reCAPTCHA. Please try again.')
-            return redirect('reporte-create')
+            return redirect('reporte-hacer-reporte')
 
 
         return super().form_valid(form)

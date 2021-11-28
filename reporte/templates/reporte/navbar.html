@@ -42,7 +42,7 @@
                                     <li><a href="#">Administrador <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
                                             <li><a href="{% url 'reporte-administrador-gestionarBlog' %}">Gestionar Blog</a></li>
-                                            <li><a href="{% url 'reporte-administrador-gestionarReportes' %}">Gestionar Reportes</a></li>
+                                            <li><a href="{% url 'reporte-administrador-gestionarReportes' %}">Gestionar Aportes</a></li>
                                             <li><a href="{% url 'reporte-administrador-gestionarUsuarios' %}">Gestionar Usuarios</a></li>
                                             <li><a href="{% url 'profile' %}">Mi perfil</a></li>
                                             <li><a href="{% url 'logout' %}">Salir </a></li>
@@ -91,7 +91,7 @@
                                           
                                             <li><a href="#">Usuario <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="{% url 'user-reportes' user.name %}">Mis reportes</a></li>
+                                                    <li><a href="{% url 'user-reportes' user.name %}">Mis aportes</a></li>
                                                     <li><a href="{% url 'profile' %}">Mi perfil</a></li>
                                                     <li><a href="{% url 'logout' %}">Salir </a></li>
                                                 </ul>
