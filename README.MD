@@ -1,0 +1,1 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=juancariza03_webapp-dagma-wetlands&metric=alert_status)](https://sonarcloud.io/dashboard?id=juancariza03_webapp-dagma-wetlands)
